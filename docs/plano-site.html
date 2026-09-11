@@ -1,0 +1,934 @@
+<title>Projeto Farmácia de Manipulação</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F4F5F1;
+  --surface:#FFFFFF;
+  --surface-2:#EBEEE7;
+  --ink:#15201B;
+  --ink-2:#4C584F;
+  --ink-3:#78837A;
+  --line:#D7DDD3;
+  --line-strong:#B9C2B5;
+  --amber:#9E6408;
+  --amber-fill:#F7EAD3;
+  --bottle:#1F4438;
+  --bottle-fill:#E2EBE5;
+  --alert:#8C2F22;
+  --alert-fill:#F6E3DF;
+  --shadow:0 1px 2px rgba(21,32,27,.06), 0 8px 24px -16px rgba(21,32,27,.22);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121611;
+    --surface:#1A201B;
+    --surface-2:#222A23;
+    --ink:#E8EDE6;
+    --ink-2:#A7B2A8;
+    --ink-3:#7D887E;
+    --line:#2C342D;
+    --line-strong:#3D473E;
+    --amber:#E2A954;
+    --amber-fill:#2B2316;
+    --bottle:#7FBCA3;
+    --bottle-fill:#1B2A23;
+    --alert:#E08C7C;
+    --alert-fill:#2E1C19;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121611;
+  --surface:#1A201B;
+  --surface-2:#222A23;
+  --ink:#E8EDE6;
+  --ink-2:#A7B2A8;
+  --ink-3:#7D887E;
+  --line:#2C342D;
+  --line-strong:#3D473E;
+  --amber:#E2A954;
+  --amber-fill:#2B2316;
+  --bottle:#7FBCA3;
+  --bottle-fill:#1B2A23;
+  --alert:#E08C7C;
+  --alert-fill:#2E1C19;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;padding-block:0 72px}
+a{color:var(--amber)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
+
+/* ---------- cabeçalho ---------- */
+.masthead{padding-block:56px 34px;border-bottom:1px solid var(--line-strong)}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 18px
+}
+h1{
+  font-family:"Zilla Slab",Georgia,serif;font-weight:700;
+  font-size:clamp(2.1rem,5.2vw,3.3rem);line-height:1.06;letter-spacing:-.015em;
+  margin:0 0 16px;text-wrap:balance;max-width:20ch
+}
+.lede{font-size:1.12rem;color:var(--ink-2);max-width:62ch;margin:0}
+.meta{
+  display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:26px;
+  font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3)
+}
+.meta b{color:var(--ink-2);font-weight:500}
+
+/* ---------- layout ---------- */
+.cols{display:grid;grid-template-columns:1fr;gap:44px;margin-top:40px}
+@media (min-width:1000px){
+  .cols{grid-template-columns:212px minmax(0,1fr);gap:56px;align-items:start}
+  .toc{position:sticky;top:24px}
+}
+.toc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.5}
+.toc p{margin:0 0 12px;letter-spacing:.12em;text-transform:uppercase;font-size:11px;color:var(--ink-3)}
+.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.toc a{color:var(--ink-2);text-decoration:none;display:flex;gap:9px}
+.toc a:hover{color:var(--amber)}
+.toc span{color:var(--ink-3);min-width:1.4em}
+
+main{min-width:0;display:flex;flex-direction:column;gap:52px}
+section{scroll-margin-top:20px}
+h2{
+  font-family:"Zilla Slab",Georgia,serif;font-weight:600;
+  font-size:clamp(1.5rem,3vw,1.95rem);line-height:1.18;letter-spacing:-.01em;
+  margin:0 0 6px;text-wrap:balance
+}
+.sec-n{
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.14em;
+  color:var(--amber);text-transform:uppercase;display:block;margin-bottom:10px
+}
+h3{
+  font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:1.03rem;
+  margin:30px 0 8px;letter-spacing:-.005em
+}
+h4{font-size:.9rem;font-weight:600;margin:20px 0 6px;color:var(--ink)}
+p,ul,ol{max-width:68ch}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 14px;padding-left:20px}
+li{margin-bottom:7px}
+li::marker{color:var(--ink-3)}
+strong{font-weight:600}
+.sub{color:var(--ink-2);font-size:.97rem}
+code,.mono{font-family:"IBM Plex Mono",monospace;font-size:.86em}
+code{background:var(--surface-2);padding:1px 5px;border-radius:3px}
+
+/* ---------- blocos ---------- */
+.panel{
+  background:var(--surface);border:1px solid var(--line);border-radius:4px;
+  padding:22px 24px;box-shadow:var(--shadow)
+}
+.panel h3:first-child,.panel h4:first-child{margin-top:0}
+.callout{
+  border-left:3px solid var(--alert);background:var(--alert-fill);
+  padding:16px 18px;margin:20px 0;border-radius:0 4px 4px 0;max-width:72ch
+}
+.callout p:last-child{margin-bottom:0}
+.callout .tag{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--alert);display:block;margin-bottom:6px
+}
+
+/* decisões */
+.decisions{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:24px}
+@media (min-width:680px){.decisions{grid-template-columns:1fr 1fr}}
+.dec{background:var(--surface);padding:18px 20px}
+.dec dt{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:6px
+}
+.dec dd{margin:0;font-family:"Zilla Slab",Georgia,serif;font-size:1.08rem;line-height:1.35;color:var(--ink)}
+.dec dd em{display:block;font-family:"IBM Plex Sans",sans-serif;font-style:normal;font-size:.84rem;color:var(--ink-2);margin-top:7px;line-height:1.5}
+
+/* chips de peso regulatório */
+.chip{
+  display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.09em;text-transform:uppercase;padding:2px 7px;border-radius:2px;
+  vertical-align:1px;white-space:nowrap
+}
+.chip-block{background:var(--alert-fill);color:var(--alert);border:1px solid var(--alert)}
+.chip-req{background:var(--amber-fill);color:var(--amber);border:1px solid var(--amber)}
+.chip-rec{background:var(--bottle-fill);color:var(--bottle);border:1px solid var(--bottle)}
+
+/* tabelas */
+.tbl-scroll{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.88rem;min-width:520px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);font-weight:400;background:var(--surface-2);
+  white-space:nowrap
+}
+tbody tr:last-child td{border-bottom:none}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+td .mono{color:var(--ink-2)}
+
+/* árvore / código */
+.tree{
+  overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:4px;
+  padding:18px 20px;margin:18px 0
+}
+.tree pre{
+  margin:0;font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.75;
+  color:var(--ink-2);white-space:pre
+}
+.tree pre b{color:var(--ink);font-weight:500}
+.tree pre i{color:var(--ink-3);font-style:normal}
+
+/* anatomia numerada da PDP */
+.stack{list-style:none;padding:0;margin:18px 0;max-width:none;counter-reset:s}
+.stack li{
+  counter-increment:s;display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;
+  padding:13px 0;border-top:1px solid var(--line);margin:0
+}
+.stack li:last-child{border-bottom:1px solid var(--line)}
+.stack li::before{
+  content:counter(s,decimal-leading-zero);
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--amber);padding-top:4px
+}
+.stack b{display:block;font-size:.95rem;margin-bottom:2px}
+.stack span{font-size:.88rem;color:var(--ink-2);display:block}
+
+/* ficha de composição — vernáculo da manipulação */
+.ficha{
+  background:var(--surface);border:1px solid var(--line-strong);border-radius:3px;
+  margin:20px 0;max-width:560px
+}
+.ficha-h{
+  padding:11px 16px;border-bottom:1px solid var(--line-strong);
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-2);background:var(--surface-2)
+}
+.ficha dl{margin:0;padding:6px 16px 12px}
+.ficha div{display:flex;justify-content:space-between;gap:16px;padding:5px 0;border-bottom:1px dotted var(--line)}
+.ficha div:last-child{border-bottom:none}
+.ficha dt{font-size:.86rem;color:var(--ink-2)}
+.ficha dd{margin:0;font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+
+/* fluxo de estados */
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0;align-items:stretch}
+.flow-step{
+  flex:1 1 148px;background:var(--surface);border:1px solid var(--line);border-radius:3px;
+  padding:12px 13px;min-width:0
+}
+.flow-step .st{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:5px
+}
+.flow-step b{font-size:.88rem;display:block;line-height:1.3}
+.flow-step span{font-size:.78rem;color:var(--ink-2);display:block;margin-top:5px;line-height:1.45}
+.flow-step.gate{border-color:var(--amber);background:var(--amber-fill)}
+.flow-step.gate .st{color:var(--amber)}
+
+/* roadmap */
+.phase{
+  display:grid;grid-template-columns:1fr;gap:6px;padding:18px 0;border-top:1px solid var(--line)
+}
+@media (min-width:720px){.phase{grid-template-columns:160px minmax(0,1fr);gap:24px}}
+.phase:last-of-type{border-bottom:1px solid var(--line)}
+.phase-k{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);line-height:1.5}
+.phase-k b{display:block;color:var(--amber);font-size:13px;letter-spacing:.06em;margin-bottom:3px}
+.phase-b h4{margin:0 0 6px}
+.phase-b ul{margin:0;max-width:64ch}
+
+/* paleta */
+.swatches{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.sw{width:104px}
+.sw i{display:block;height:52px;border-radius:3px;border:1px solid var(--line-strong)}
+.sw b{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;margin-top:6px;color:var(--ink)}
+.sw span{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-3)}
+
+/* perguntas finais */
+.asks{counter-reset:q;list-style:none;padding:0;max-width:68ch}
+.asks li{
+  counter-increment:q;padding-left:34px;position:relative;margin-bottom:14px
+}
+.asks li::before{
+  content:"Q" counter(q);position:absolute;left:0;top:1px;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--amber)
+}
+footer{
+  margin-top:62px;padding-top:22px;border-top:1px solid var(--line-strong);
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);
+  display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">Plano de produto · e-commerce de manipulados · v1</p>
+  <h1>Projeto Farmácia de Manipulação</h1>
+  <p class="lede">Planejamento completo de um site de venda online de fórmulas manipuladas, suplementos vitamínicos e dermocosméticos para público adulto (18+), tomando a <b>Oficialfarma</b> como referência de mercado — inclusive no que ela faz que você <em>não</em> deve copiar.</p>
+  <div class="meta">
+    <span><b>Objetivo</b> — venda online (D2C)</span>
+    <span><b>Público</b> — adultos 18+</span>
+    <span><b>Modelo</b> — oficialfarma.com.br</span>
+    <span><b>Data</b> — 11/09/2026</span>
+  </div>
+</header>
+
+<div class="cols">
+
+<nav class="toc" aria-label="Sumário">
+  <p>Sumário</p>
+  <ol>
+    <li><a href="#decisoes"><span>01</span>Decisões</a></li>
+    <li><a href="#publico"><span>02</span>Público</a></li>
+    <li><a href="#modelo"><span>03</span>O modelo</a></li>
+    <li><a href="#regra"><span>04</span>Regulatório</a></li>
+    <li><a href="#ia"><span>05</span>Arquitetura</a></li>
+    <li><a href="#catalogo"><span>06</span>Catálogo</a></li>
+    <li><a href="#paginas"><span>07</span>Páginas</a></li>
+    <li><a href="#receita"><span>08</span>Fluxo de receita</a></li>
+    <li><a href="#conversao"><span>09</span>Conversão</a></li>
+    <li><a href="#stack"><span>10</span>Stack</a></li>
+    <li><a href="#pagamento"><span>11</span>Pagamento e frete</a></li>
+    <li><a href="#seo"><span>12</span>SEO</a></li>
+    <li><a href="#design"><span>13</span>Identidade</a></li>
+    <li><a href="#metricas"><span>14</span>Métricas</a></li>
+    <li><a href="#roadmap"><span>15</span>Roadmap</a></li>
+    <li><a href="#riscos"><span>16</span>Riscos</a></li>
+    <li><a href="#perguntas"><span>17</span>Decidir agora</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 -->
+<section id="decisoes">
+  <span class="sec-n">01 · Ponto de partida</span>
+  <h2>As seis decisões que definem o site</h2>
+  <p>Tudo o mais é consequência destas seis. Se alguma mudar, o plano muda.</p>
+  <dl class="decisions">
+    <div class="dec">
+      <dt>Eixo de navegação</dt>
+      <dd>Por objetivo, não por forma farmacêutica
+        <em>O cliente não procura "cápsula 500 mg", procura "emagrecer", "render mais no treino", "parar de sentir cansaço". A taxonomia principal é de objetivos; ativo e forma são filtros.</em></dd>
+    </div>
+    <div class="dec">
+      <dt>Unidade de venda</dt>
+      <dd>Packs com nome próprio, não SKUs soltos
+        <em>É o que sustenta o ticket da Oficialfarma: Pack Emagrecimento R$ 239, Pack Hipertrofia R$ 344. Um pack tem página de vendas própria, não é "kit" gerado automaticamente.</em></dd>
+    </div>
+    <div class="dec">
+      <dt>Catálogo de largada</dt>
+      <dd>Só isentos de prescrição na Fase 1
+        <em>Suplementos, vitaminas, fitoterápicos e dermocosméticos vendem sem receita. Manipulado com tarja entra na Fase 3, com triagem farmacêutica pronta — não antes.</em></dd>
+    </div>
+    <div class="dec">
+      <dt>Prazo é conteúdo</dt>
+      <dd>Manipulado não tem estoque: comunique D+3
+        <em>Cada fórmula é feita depois da compra. O prazo de manipulação aparece na PDP, no carrinho, no checkout e no e-mail — não escondido no rodapé.</em></dd>
+    </div>
+    <div class="dec">
+      <dt>Plataforma</dt>
+      <dd>SaaS na Fase 1, headless quando a receita virar gargalo
+        <em>Tray ou Nuvemshop para vender em 6 semanas. Migração para Next.js + Medusa quando a triagem de receita e a assinatura recorrente exigirem fluxo próprio.</em></dd>
+    </div>
+    <div class="dec">
+      <dt>Limite de linguagem</dt>
+      <dd>Benefício sim, promessa nunca
+        <em>"Auxilia no controle de peso" é permitido. "Perca 8 kg", antes-e-depois e depoimento de resultado são infração da RDC 96/2008 e passivo de Procon. Esse limite é regra de redação do site inteiro.</em></dd>
+    </div>
+  </dl>
+</section>
+
+<!-- 02 -->
+<section id="publico">
+  <span class="sec-n">02 · Demanda</span>
+  <h2>Quem compra e o que essa pessoa precisa ver</h2>
+  <p>Três perfis cobrem quase toda a receita de uma manipulação D2C no Brasil. Cada um entra por uma porta diferente do site e decide por um argumento diferente.</p>
+
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>Perfil</th><th>Entra por</th><th>Decide por</th><th>Ticket típico</th><th>Porta do site</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Gestão de peso</b><br><span class="sub">30–50 anos, maioria feminina, alta sensibilidade a prova social</span></td>
+        <td>Busca paga e Instagram por "termogênico", "Morosil", "remédio para emagrecer"</td>
+        <td>Pack fechado, parcelamento e reversibilidade (frete e devolução claros)</td>
+        <td class="num">R$ 180–280</td>
+        <td>Landing de pack + hub Emagrecimento</td>
+      </tr>
+      <tr>
+        <td><b>Performance / academia</b><br><span class="sub">25–45 anos, maioria masculina, treina 4–6×/semana, compra recorrente</span></td>
+        <td>Busca por ativo: creatina, beta-alanina, tribulus, ZMA, turkesterone</td>
+        <td>Dose declarada no rótulo, custo por dose e constância de entrega</td>
+        <td class="num">R$ 150–350</td>
+        <td>Página de ativo (SEO) → assinatura</td>
+      </tr>
+      <tr>
+        <td><b>Saúde e reposição</b><br><span class="sub">40+, chega com exame ou prescrição na mão, baixa tolerância a risco</span></td>
+        <td>Busca por "vitamina D manipulada", "B12 metilcobalamina", indicação médica</td>
+        <td>Credibilidade: farmacêutico responsável visível, CRF, atendimento humano</td>
+        <td class="num">R$ 90–200</td>
+        <td>Hub Saúde + fluxo de receita</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Consequências de projeto</h3>
+  <ul>
+    <li><b>Perfil 2 é o que paga a operação no ano 2.</b> É o único naturalmente recorrente — por isso assinatura entra na Fase 2, não na Fase 4.</li>
+    <li><b>Perfil 3 é o que dá legitimidade ao domínio.</b> Conteúdo técnico revisado por farmacêutico serve esse perfil e, de tabela, resolve o E-E-A-T do Google para as buscas do perfil 1.</li>
+    <li><b>Público 18+ é requisito, não detalhe.</b> Ativos como ioimbina, cafeína em dose alta e vasodilatadores não podem ser vendidos a menor de idade — confirmação de idade no primeiro acesso e data de nascimento obrigatória no cadastro.</li>
+  </ul>
+</section>
+
+<!-- 03 -->
+<section id="modelo">
+  <span class="sec-n">03 · Benchmark</span>
+  <h2>O que a Oficialfarma acertou — e o que não copiar</h2>
+  <p>Mapeei a estrutura pública do site: taxonomia, anatomia de página de produto, packs, sub-marcas e app. Vale separar o que é boa engenharia de conversão do que é exposição regulatória.</p>
+
+  <h3>Copiar</h3>
+  <ul>
+    <li><b>Taxonomia por objetivo.</b> As categorias raiz são <span class="mono">Desempenho físico · Emagrecimento · Saúde · Beleza · Queda de cabelo · Dermocosméticos · Mulher · Homem · Linha casa · Datas especiais</span>. Nenhuma é forma farmacêutica.</li>
+    <li><b>PDP em cinco perguntas.</b> Toda página de produto responde, nesta ordem: <em>O que é · Quais os benefícios · Qual a composição · Como usar · Advertências</em>. É previsível e escaneável, e a tabela de composição por dose ("cada 2 cápsulas contêm...") faz o trabalho de convencimento técnico.</li>
+    <li><b>Packs nomeados com página de vendas.</b> Pack Emagrecimento, Pack Massa Muscular, Pack Mais Hipertrofia, Pack 360º — cada um com problema, composição item a item, benefício e posologia. Aumenta ticket e reduz paralisia de escolha.</li>
+    <li><b>Compostos exclusivos de marca.</b> "Abelhinha", "Forpump", "Fome Control", "Termocut" — nome próprio cria ativo intangível e tira o produto da comparação de preço por ativo.</li>
+    <li><b>Parcelamento no lugar do preço.</b> "R$ 344,20 <em>ou 10× de R$ 34,42</em>" — a segunda linha é a que converte.</li>
+    <li><b>Selo de honestidade visual.</b> "Imagem meramente ilustrativa | Manipulação individualizada" em toda foto de produto. Barato e protege.</li>
+    <li><b>Aviso de canal único.</b> "Segundo a Anvisa, só é permitida a comercialização dos manipulados em site próprio e lojas físicas da marca." Educa o cliente e afasta responsabilidade por revenda pirata.</li>
+    <li><b>Sub-marcas por vertical</b> (OficialDerma, OficialNutri, OficialFood) e <b>app próprio</b> — Fase 4, mas desenhe a arquitetura já prevendo.</li>
+  </ul>
+
+  <h3>Não copiar</h3>
+  <div class="callout">
+    <span class="tag">Exposição regulatória do modelo</span>
+    <p>O site de referência vende packs que contêm <b>tadalafil</b> — medicamento sob prescrição, tarja vermelha — dentro de "pack de desempenho", e usa linguagem superlativa ("o termogênico mais eficaz do mercado", "vasodilatador mais potente da atualidade") junto de promessa de resultado. Também estampa depoimento de resultado em produto.</p>
+    <p>Isso é <b>infração da RDC 96/2008</b> (propaganda de medicamento) e, no caso de tarjado por meio remoto, expõe a autorização de funcionamento. Um entrante novo é alvo fácil: não tem histórico, nem estrutura jurídica, nem volume para absorver interdição. <b>Entre com catálogo isento de prescrição e linguagem conservadora.</b> Você compete em confiança, prazo e atendimento — não em promessa.</p>
+  </div>
+  <p class="sub">O mesmo raciocínio vale para "ioimbina", "Tadalafil com Arginina" e compostos hormonais: são o que dá margem alta no modelo de referência e são exatamente o que atrai fiscalização. Deixe fora da Fase 1 e decida com o farmacêutico responsável e um advogado sanitarista antes de incluir.</p>
+</section>
+
+<!-- 04 -->
+<section id="regra">
+  <span class="sec-n">04 · Restrições</span>
+  <h2>O regulatório que desenha o site</h2>
+  <p>Em manipulação, a norma não é um capítulo de "termos de uso" — ela define quais páginas existem, o que pode ser escrito nelas e onde o checkout tem de parar. Trate esta seção como requisito funcional. <b>Nada aqui substitui a validação do seu farmacêutico responsável e de um advogado sanitarista.</b></p>
+
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>Norma</th><th>O que exige</th><th>Como aparece no site</th><th>Peso</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>RDC 67/2007</b><br><span class="sub">Boas práticas de manipulação</span></td>
+        <td>Veda comercialização e divulgação de manipulados por meio remoto sem prescrição; manipulação é individualizada, não há "estoque de fórmula"</td>
+        <td>Catálogo Fase 1 restrito a isentos; toda fórmula com tarja só via upload de receita; texto "manipulação individualizada" no produto</td>
+        <td><span class="chip chip-block">bloqueante</span></td>
+      </tr>
+      <tr>
+        <td><b>RDC 44/2009</b><br><span class="sub">Comércio eletrônico por farmácia</span></td>
+        <td>O endereço do site precisa constar na AFE da Anvisa; farmacêutico acessível ao cliente; vedado dispensar sujeito a controle especial por meio remoto</td>
+        <td>Rodapé com AFE, CNPJ, endereço físico, nome e CRF do RT; canal de orientação farmacêutica com horário declarado</td>
+        <td><span class="chip chip-block">bloqueante</span></td>
+      </tr>
+      <tr>
+        <td><b>Portaria 344/1998</b><br><span class="sub">Substâncias sob controle especial</span></td>
+        <td>Psicotrópicos, anorexígenos e afins não se dispensam remotamente</td>
+        <td>Lista de bloqueio no cadastro de produto: SKU marcado como controlado não pode ser publicado</td>
+        <td><span class="chip chip-block">bloqueante</span></td>
+      </tr>
+      <tr>
+        <td><b>RDC 96/2008</b><br><span class="sub">Propaganda de medicamentos</span></td>
+        <td>Proíbe promessa de resultado, superlativo, antes-e-depois, depoimento de eficácia e sugestão de que o produto dispensa acompanhamento</td>
+        <td>Guia de redação obrigatório; moderação de review por eficácia; banimento de antes-e-depois em toda peça</td>
+        <td><span class="chip chip-req">obrigatório</span></td>
+      </tr>
+      <tr>
+        <td><b>RDC 243/2018 + IN 28/2018</b><br><span class="sub">Suplementos alimentares</span></td>
+        <td>Só alegações da lista oficial, respeitando limites mínimos e máximos de nutriente por dose</td>
+        <td>Campo "alegação autorizada" no produto, escolhido de lista fechada — não texto livre</td>
+        <td><span class="chip chip-req">obrigatório</span></td>
+      </tr>
+      <tr>
+        <td><b>LGPD art. 11</b><br><span class="sub">Dado pessoal sensível</span></td>
+        <td>Receita, exame e relato de sintoma são dado de saúde: exigem consentimento específico e destacado, base legal e retenção definida</td>
+        <td>Upload de receita em bucket cifrado e segregado, nunca em e-mail ou WhatsApp; consentimento próprio; política de retenção e exclusão publicada</td>
+        <td><span class="chip chip-block">bloqueante</span></td>
+      </tr>
+      <tr>
+        <td><b>CDC art. 49</b><br><span class="sub">Direito de arrependimento</span></td>
+        <td>7 dias para desistir de compra fora do estabelecimento</td>
+        <td>Política de troca explícita sobre produto personalizado e sobre restrição sanitária de retorno de medicamento — redigida por advogado, não improvisada</td>
+        <td><span class="chip chip-req">obrigatório</span></td>
+      </tr>
+      <tr>
+        <td><b>Público 18+</b></td>
+        <td>Venda de ativos estimulantes e vasoativos a adulto</td>
+        <td>Confirmação de idade no primeiro acesso; data de nascimento obrigatória; bloqueio de checkout para menor</td>
+        <td><span class="chip chip-req">obrigatório</span></td>
+      </tr>
+      <tr>
+        <td><b>Res. CFF 586/2013</b><br><span class="sub">Prescrição farmacêutica</span></td>
+        <td>Delimita o que o farmacêutico pode indicar sem prescrição médica</td>
+        <td>Define o teto do que a triagem pode aprovar por conta própria</td>
+        <td><span class="chip chip-rec">recomendado</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="sub">Observação útil: existe litígio em curso sobre a validade da vedação da RDC 67/2007 quanto a produtos <em>isentos</em> de prescrição, com decisões que reconhecem excesso de poder regulamentar. Isso pode ampliar seu espaço — mas é decisão de risco jurídico com liminar nominal, não premissa de projeto. Construa dentro da norma como ela está escrita.</p>
+</section>
+
+<!-- 05 -->
+<section id="ia">
+  <span class="sec-n">05 · Arquitetura de informação</span>
+  <h2>Mapa do site</h2>
+  <p>Três eixos de navegação sobre o mesmo catálogo: <b>objetivo</b> (menu principal), <b>ativo</b> (SEO e busca interna) e <b>pessoa</b> (Mulher / Homem / 40+). Um produto vive em vários — por isso a taxonomia é de tags, não de pasta.</p>
+
+  <div class="tree">
+<pre><b>/</b>                              home — objetivos, mais buscados, packs, prova de credibilidade
+│
+├─ <b>/emagrecimento</b>               <i>hub · termogênicos, controle de apetite, absorção de gordura, drenagem</i>
+├─ <b>/desempenho-fisico</b>           <i>hub · pré-treino, massa muscular, força e resistência, recuperação, energia</i>
+├─ <b>/saude</b>                       <i>hub · vitaminas e minerais, imunidade, sono, intestino, fígado, saúde mental</i>
+├─ <b>/beleza</b>                      <i>hub · pele, cabelo e unhas, colágeno, anti-idade</i>
+├─ <b>/queda-de-cabelo</b>             <i>hub dedicado — volume de busca justifica sair de /beleza</i>
+├─ <b>/dermocosmeticos</b>             <i>hub · uso tópico: cremes, séruns, loções</i>
+├─ <b>/mulher</b>  ·  <b>/homem</b>           <i>curadoria por pessoa, montada sobre os hubs acima</i>
+│
+├─ <b>/packs</b>                       índice de packs
+│   └─ <b>/packs/[slug]</b>            landing de vendas do pack (página própria, não template de PLP)
+│
+├─ <b>/p/[slug]</b>                    página de produto (PDP)
+├─ <b>/ativos/[slug]</b>               <i>página de ativo — Morosil, creatina, vitamina D3, colágeno: ativo de SEO</i>
+│
+├─ <b>/assinatura</b>                  como funciona a recorrência, desconto, pausa e cancelamento
+├─ <b>/receita</b>                     enviar receita · como funciona a avaliação farmacêutica
+├─ <b>/atendimento-farmaceutico</b>    <i>exigência da RDC 44/2009 — canal, horário, nome e CRF do RT</i>
+│
+├─ <b>/conta</b>                       pedidos · receitas · assinaturas · endereços · dados e consentimentos
+├─ <b>/carrinho</b>  →  <b>/checkout</b>      <i>checkout em etapa única com validação de receita antes do pagamento</i>
+│
+├─ <b>/blog</b>                        conteúdo revisado tecnicamente, com autor e data de revisão
+│   └─ <b>/blog/[slug]</b>
+│
+└─ institucional
+   ├─ <b>/sobre</b>                    laboratório, equipamentos, controle de qualidade, RT
+   ├─ <b>/qualidade</b>                <i>como uma fórmula é feita: pesagem, encapsulação, laudo, rastreabilidade</i>
+   ├─ <b>/entrega</b>                  prazo de manipulação + prazo de transporte, separados
+   ├─ <b>/trocas-e-devolucoes</b>      ·  <b>/privacidade</b>  ·  <b>/termos</b>  ·  <b>/cookies</b>
+   └─ <b>/contato</b>                  ·  <b>/mapa-do-site</b>
+</pre>
+  </div>
+
+  <h3>Menu principal</h3>
+  <p>Sete itens, dois níveis, sem mega-menu pesado no mobile: <span class="mono">Emagrecimento · Desempenho · Saúde · Beleza · Cabelo · Packs · Assinatura</span>. Busca sempre visível no topo — em catálogo de manipulados, busca é o segundo caminho mais usado depois do hub.</p>
+
+  <h3>Filtros da listagem (PLP)</h3>
+  <ul>
+    <li><b>Objetivo</b> (herdado do hub) · <b>Ativo</b> · <b>Forma</b> (cápsula, sachê, creme, gel, solução) · <b>Faixa de preço</b> · <b>Duração do tratamento</b> (30 / 60 / 90 dias) · <b>Sem cafeína</b> · <b>Vegano</b> · <b>Exige receita</b></li>
+    <li><b>Duração</b> e <b>custo por dose</b> são os filtros que diferenciam quem entende de manipulação de quem só empacotou um e-commerce genérico. Quase ninguém oferece, e é o que o cliente recorrente realmente compara.</li>
+  </ul>
+</section>
+
+<!-- 06 -->
+<section id="catalogo">
+  <span class="sec-n">06 · Dados</span>
+  <h2>Modelo de catálogo</h2>
+  <p>O modelo de produto padrão de e-commerce (título, preço, foto, descrição) não sustenta manipulado. A composição por dose é conteúdo estruturado — é o que alimenta PDP, filtro, comparação, custo por dose, rótulo e a checagem de alegação permitida. Modele certo na semana 1: refazer depois de 400 SKUs cadastrados custa um mês.</p>
+
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>Campo</th><th>Tipo</th><th>Uso</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">slug, nome_comercial</td><td>texto</td><td>URL e título; nome próprio de linha quando houver</td></tr>
+      <tr><td class="mono">categoria_objetivo[]</td><td>tags</td><td>Hubs em que aparece — múltiplos</td></tr>
+      <tr><td class="mono">ativos[]</td><td>relação</td><td>Cada item: <code>ativo · quantidade · unidade</code>. Alimenta a tabela de composição e a página de ativo</td></tr>
+      <tr><td class="mono">dose_unidade</td><td>texto</td><td>"2 cápsulas", "1 sachê", "3 g" — base de toda a composição</td></tr>
+      <tr><td class="mono">doses_embalagem</td><td>inteiro</td><td>Deriva duração e custo por dose</td></tr>
+      <tr><td class="mono">forma_farmaceutica</td><td>enum</td><td>Cápsula · sachê · creme · gel · solução · shot</td></tr>
+      <tr><td class="mono">posologia</td><td>texto</td><td>Bloco "Como usar"</td></tr>
+      <tr><td class="mono">alegacoes_autorizadas[]</td><td>lista fechada</td><td><b>Não é texto livre.</b> Seleção da lista da IN 28/2018 — barreira contra alegação irregular</td></tr>
+      <tr><td class="mono">advertencias[]</td><td>lista + texto</td><td>Contraindicação, gestante/lactante, interação, aviso de cafeína</td></tr>
+      <tr><td class="mono">exige_receita</td><td>enum</td><td><code>nao · sim_simples · sim_controlada</code> — <code>sim_controlada</code> bloqueia publicação</td></tr>
+      <tr><td class="mono">prazo_manipulacao_dias</td><td>inteiro</td><td>Por SKU, não global. Entra na promessa de entrega da PDP e do checkout</td></tr>
+      <tr><td class="mono">restricao_18</td><td>booleano</td><td>Estimulante, vasoativo, ioimbina etc.</td></tr>
+      <tr><td class="mono">preco, parcelas_max</td><td>decimal</td><td>Preço e a linha "ou N× de R$ X" — ambas exibidas</td></tr>
+      <tr><td class="mono">assinavel, desconto_assinatura</td><td>bool, %</td><td>Elegibilidade para recorrência</td></tr>
+      <tr><td class="mono">revisado_por, revisado_em</td><td>relação, data</td><td>Farmacêutico que aprovou o texto — vai ao ar na página e serve ao E-E-A-T</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Como isso aparece na página</h3>
+  <p>Gerado do modelo, não digitado à mão em cada produto — no formato que o público já reconhece de rótulo de manipulado:</p>
+
+  <div class="ficha">
+    <div class="ficha-h">Composição · cada 2 cápsulas contêm</div>
+    <dl>
+      <div><dt>Cromo (picolinato)</dt><dd>350 mcg</dd></div>
+      <div><dt>Morosil<sup>®</sup> (extrato seco)</dt><dd>500 mg</dd></div>
+      <div><dt>Cafeína anidra</dt><dd>150 mg</dd></div>
+      <div><dt>Zinco quelato</dt><dd>15 mg</dd></div>
+      <div><dt>Excipiente q.s.p.</dt><dd>1 cápsula</dd></div>
+    </dl>
+    <div class="ficha-h" style="border-top:1px solid var(--line-strong);border-bottom:none">60 doses · 30 dias · R$ 4,12 por dose</div>
+  </div>
+  <p class="sub">A última linha — duração e custo por dose — é calculada. É a informação que o cliente recorrente usa para decidir e que o concorrente não dá.</p>
+</section>
+
+<!-- 07 -->
+<section id="paginas">
+  <span class="sec-n">07 · Especificação</span>
+  <h2>Páginas, bloco a bloco</h2>
+
+  <h3>Home</h3>
+  <ol>
+    <li><b>Faixa de confiança</b> — frete, prazo real de manipulação, parcelamento, atendimento farmacêutico. Antes de qualquer coisa.</li>
+    <li><b>Escolha por objetivo</b> — seis portas grandes (Emagrecer · Treinar · Saúde · Beleza · Cabelo · Sono). É o herói da página; dispensa banner promocional gigante.</li>
+    <li><b>Mais buscados</b> — carrossel de 8 SKUs com preço e parcela.</li>
+    <li><b>Packs em destaque</b> — três, com o problema que resolvem no título.</li>
+    <li><b>Por que manipulado</b> — dose individualizada, ativos combinados em uma cápsula, sem excipiente desnecessário. Argumento de categoria, não de marca.</li>
+    <li><b>Como sua fórmula é feita</b> — quatro passos com foto real do laboratório. Este bloco é o que converte o perfil 3.</li>
+    <li><b>Credibilidade</b> — farmacêutico responsável com nome e CRF, AFE, laudo de controle de qualidade.</li>
+    <li><b>Conteúdo</b> — três posts do blog, com autor e data de revisão.</li>
+    <li><b>Captura</b> — newsletter com benefício explícito. Sem pop-up antes do primeiro scroll.</li>
+  </ol>
+
+  <h3>Página de produto (PDP)</h3>
+  <p>A ordem abaixo é a ordem real na página, e cada bloco responde a uma objeção específica na sequência em que ela aparece na cabeça do cliente.</p>
+  <ol class="stack">
+    <li><b>Foto + selo de manipulação individualizada</b><span>"Imagem meramente ilustrativa · manipulação individualizada" — ajusta expectativa e protege.</span></li>
+    <li><b>Nome, promessa curta, preço e parcela</b><span>Preço e "ou N× de R$ X" na mesma altura. Desconto com percentual quando houver.</span></li>
+    <li><b>Prazo real de entrega</b><span>"Manipulado em até 3 dias úteis + frete" com CEP. Nunca só "frete grátis".</span></li>
+    <li><b>Comprar / assinar</b><span>Duas opções lado a lado; assinatura com desconto e "cancele quando quiser" visível.</span></li>
+    <li><b>Alerta de receita</b><span>Quando <code>exige_receita ≠ nao</code>: aviso antes do botão, não depois. Ninguém descobre no checkout.</span></li>
+    <li><b>O que é</b><span>Dois parágrafos. Mecanismo em linguagem de leigo adulto.</span></li>
+    <li><b>Benefícios</b><span>Lista de alegações autorizadas. Verbo "auxilia/contribui", nunca "elimina/garante".</span></li>
+    <li><b>Composição por dose</b><span>Tabela gerada do modelo, com duração e custo por dose.</span></li>
+    <li><b>Como usar</b><span>Posologia, horário, com ou sem alimento.</span></li>
+    <li><b>Advertências e contraindicações</b><span>Bloco fixo, mesmo peso visual do resto. Gestante, lactante, cardiopata, interação, cafeína.</span></li>
+    <li><b>Perguntas frequentes do produto</b><span>3–6 itens com marcação <code>FAQPage</code>.</span></li>
+    <li><b>Avaliações moderadas</b><span>Sobre entrega, sabor, tolerância e atendimento. Review que relata eficácia é moderado — exigência da RDC 96/2008, não escolha editorial.</span></li>
+    <li><b>Combina com / também usam</b><span>Cross-sell que monta pack, com preço do conjunto.</span></li>
+    <li><b>Assinatura técnica</b><span>Texto revisado por [farmacêutico], CRF, data da última revisão.</span></li>
+  </ol>
+
+  <h3>Landing de pack</h3>
+  <p>Página de vendas, não PLP filtrada: problema → o que é o pack → benefícios por item → composição de cada item → como usar o conjunto → advertências → preço do pack com economia contra a soma dos itens → FAQ. Um único CTA, repetido três vezes na descida.</p>
+
+  <h3>Carrinho e checkout</h3>
+  <ul>
+    <li><b>Carrinho</b> — prazo de manipulação por item (o maior manda na promessa do pedido), cupom, frete calculado, upsell de assinatura, aviso de receita pendente.</li>
+    <li><b>Checkout</b> — etapa única, com login social e compra sem cadastro completo. Campos: identificação → entrega → <b>receita (se houver item que exija)</b> → pagamento.</li>
+    <li><b>Regra de pagamento:</b> se há item que exige receita, o pedido é criado e o pagamento só é capturado <b>após</b> a validação do farmacêutico. Autorizar e capturar antes gera estorno, disputa e reclamação — o pior custo operacional possível.</li>
+    <li>Confirmação de idade (18+) e aceite de consentimento LGPD específico para dado de saúde, separado do aceite de termos.</li>
+  </ul>
+
+  <h3>Conta do cliente</h3>
+  <p>Pedidos com rastreio · <b>minhas receitas</b> (validade, status, quais produtos liberam) · assinaturas (pular mês, trocar data, pausar, cancelar — sem falar com humano) · endereços · dados e consentimentos, com exportar e excluir dados exigidos pela LGPD.</p>
+</section>
+
+<!-- 08 -->
+<section id="receita">
+  <span class="sec-n">08 · Operação</span>
+  <h2>O fluxo de receita é o coração do sistema</h2>
+  <p>É a parte que nenhuma plataforma de e-commerce entrega pronta e a que decide se o site escala além de suplemento. São estados de pedido, não uma tela: cada transição gera notificação e fica registrada para auditoria sanitária.</p>
+
+  <div class="flow">
+    <div class="flow-step"><span class="st">estado 1</span><b>Recebido</b><span>Pedido criado, pagamento autorizado e <em>não</em> capturado.</span></div>
+    <div class="flow-step"><span class="st">estado 2</span><b>Receita enviada</b><span>Upload em bucket cifrado e segregado. Nunca por e-mail ou WhatsApp.</span></div>
+    <div class="flow-step gate"><span class="st">portão</span><b>Triagem farmacêutica</b><span>RT confere prescritor, CRM/CRO, data, validade, dose e substância. Aprova, pede correção ou recusa.</span></div>
+    <div class="flow-step"><span class="st">estado 3</span><b>Aprovado</b><span>Pagamento capturado. Ordem de manipulação emitida.</span></div>
+    <div class="flow-step"><span class="st">estado 4</span><b>Em manipulação</b><span>Pesagem, encapsulação, conferência, rótulo com lote.</span></div>
+    <div class="flow-step"><span class="st">estado 5</span><b>Enviado</b><span>Rastreio ao cliente. Receita retida conforme a norma quando aplicável.</span></div>
+  </div>
+
+  <h4>Regras que precisam estar no código, não no manual</h4>
+  <ul>
+    <li>Receita vencida não libera pedido — a validade é campo com data, e o sistema checa.</li>
+    <li>Receita aprovada fica na conta e reaproveita em recompra, dentro da validade. É o maior ganho de conveniência do fluxo.</li>
+    <li>Recusa sempre com motivo em texto e caminho de correção. "Recusado" sem motivo vira ticket e reclamação pública.</li>
+    <li>SLA de triagem visível ao cliente (ex.: até 4 h úteis) e monitorado — é o gargalo que trava o faturamento em pico.</li>
+    <li>Arquivo de receita com retenção definida, acesso restrito ao RT e trilha de auditoria de quem abriu.</li>
+  </ul>
+</section>
+
+<!-- 09 -->
+<section id="conversao">
+  <span class="sec-n">09 · Conversão e retenção</span>
+  <h2>Onde o faturamento é ganho</h2>
+
+  <h3>Aumentar ticket</h3>
+  <ul>
+    <li><b>Packs nomeados</b> — a alavanca mais forte do modelo de referência. Ticket 2 a 3× o de SKU solto.</li>
+    <li><b>Duração como upsell</b> — 30 / 60 / 90 dias na PDP, com custo por dose caindo. Vende volume sem desconto percebido.</li>
+    <li><b>Cross-sell por complementaridade real</b> — termogênico + controle de apetite; creatina + beta-alanina. Curado por farmacêutico, não por algoritmo de "quem viu também viu".</li>
+    <li><b>Frete grátis com régua</b> acima do ticket médio × 1,3.</li>
+  </ul>
+
+  <h3>Recorrência</h3>
+  <ul>
+    <li><b>Assinatura na Fase 2</b>, com 10–15% de desconto, entrega programada e autogestão total no painel. Manipulado é consumo contínuo: é o encaixe mais natural da categoria.</li>
+    <li><b>Lembrete de recompra</b> calculado por <code>doses_embalagem</code> e posologia — o sistema sabe o dia em que o frasco acaba. E-mail e WhatsApp em D-7.</li>
+    <li><b>Receita salva</b> na conta: recomprar tarjado sem reenviar documento.</li>
+  </ul>
+
+  <h3>Confiança (o que realmente diferencia em manipulação)</h3>
+  <ul>
+    <li>Farmacêutico responsável com nome, foto e CRF em página própria — não uma linha no rodapé.</li>
+    <li><b>Orientação farmacêutica por WhatsApp</b> com horário declarado. Atende a RDC 44/2009 e é canal de venda assistida, principalmente para o perfil 40+.</li>
+    <li>Página "como sua fórmula é feita", com foto do laboratório e das etapas. Combate a desconfiança de "manipulado é farinha".</li>
+    <li>Laudo de controle de qualidade e rastreabilidade por lote disponíveis quando solicitados.</li>
+  </ul>
+
+  <div class="callout" style="border-left-color:var(--amber);background:var(--amber-fill)">
+    <span class="tag" style="color:var(--amber)">Guia de redação — regra do site inteiro</span>
+    <p><b>Pode:</b> "auxilia no controle de peso", "contribui para o metabolismo energético", "pode auxiliar na redução da fadiga".<br>
+    <b>Não pode:</b> "emagreça 8 kg em 30 dias", "o mais potente do mercado", "substitui", "cura", antes-e-depois, depoimento de resultado, foto de corpo com número de medida.</p>
+    <p>Vale para PDP, anúncio, e-mail, Instagram e o texto de embalagem. Coloque essa regra no CMS como campo de validação, não como recomendação de estilo — texto livre sempre vaza.</p>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="stack">
+  <span class="sec-n">10 · Tecnologia</span>
+  <h2>Stack recomendada</h2>
+  <p><b>Recomendação: comece em SaaS, migre quando a receita for o gargalo.</b> A tentação de começar headless é forte e quase sempre errada — você não sabe ainda qual objetivo converte, e cada semana sem vender custa aprendizado.</p>
+
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>Fase</th><th>Stack</th><th>Custo mensal aprox.</th><th>Limite</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Fase 1–2</b><br><span class="sub">semanas 1–16</span></td>
+        <td><b>Tray</b> ou <b>Nuvemshop</b> + app de assinatura + WhatsApp API + triagem de receita em ferramenta externa controlada (formulário em bucket cifrado + painel simples)</td>
+        <td class="num">R$ 300–900</td>
+        <td>Fluxo de receita fica meio manual; modelo de composição vira campo customizado, não entidade</td>
+      </tr>
+      <tr>
+        <td><b>Fase 3+</b><br><span class="sub">quando houver receita recorrente e SKU tarjado</span></td>
+        <td><b>Next.js</b> (App Router) + <b>Medusa 2</b> + Postgres + fila para triagem e ordem de manipulação; CMS headless para blog e páginas de ativo</td>
+        <td class="num">R$ 600–2.500<br><span class="sub">+ desenvolvimento</span></td>
+        <td>Exige equipe ou parceiro técnico constante</td>
+      </tr>
+      <tr>
+        <td><span class="sub">Alternativa</span></td>
+        <td><b>VTEX</b> — se a operação já nasce com loja física, multi-marca e time interno</td>
+        <td class="num">% do faturamento</td>
+        <td>Custo e complexidade desproporcionais antes de ~R$ 300 mil/mês</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Integrações, em ordem de necessidade</h3>
+  <ol>
+    <li><b>Pagamento</b> — Pix e cartão com parcelamento longo (até 10×): Pagar.me, Mercado Pago ou Appmax. Parcelamento não é detalhe, é a mecânica de preço da categoria.</li>
+    <li><b>Antifraude</b> — obrigatório desde o dia 1; ticket alto e público novo atraem chargeback.</li>
+    <li><b>Frete</b> — Correios + transportadora regional via agregador (Melhor Envio, Frenet), com <b>prazo de manipulação somado ao prazo de transporte</b> na etiqueta de promessa.</li>
+    <li><b>ERP / fiscal</b> — NF-e e controle de lote. Em manipulação, rastreabilidade por lote não é opcional.</li>
+    <li><b>WhatsApp Business API</b> — atendimento, status de receita, lembrete de recompra.</li>
+    <li><b>CRM / e-mail</b> — carrinho abandonado, pós-venda D+7 e D+25, régua de recompra.</li>
+    <li><b>Armazenamento de receita</b> — bucket privado, cifrado, com URL assinada e expiração curta. Nunca no mesmo balde dos assets do site.</li>
+  </ol>
+</section>
+
+<!-- 11 -->
+<section id="pagamento">
+  <span class="sec-n">11 · Pagamento, frete e prazo</span>
+  <h2>A promessa de entrega é dupla</h2>
+  <p>Este é o erro operacional mais comum de manipulação online: tratar manipulado como produto de estoque. Não existe "sai hoje". Existe <b>prazo de manipulação</b> mais <b>prazo de transporte</b>, e o cliente precisa ver os dois separados — antes de pagar.</p>
+  <ul>
+    <li><b>Na PDP:</b> "Manipulado em até 3 dias úteis · entrega em 2 a 5 dias após o envio". Com CEP, mostre a data final estimada.</li>
+    <li><b>No carrinho:</b> o item de maior <code>prazo_manipulacao_dias</code> define a data do pedido inteiro. Ofereça envio separado quando a diferença passar de 3 dias.</li>
+    <li><b>Pagamento:</b> Pix com desconto de 5% (reduz taxa e chargeback) e cartão até 10× com a parcela sempre exibida ao lado do preço.</li>
+    <li><b>Captura condicionada</b> à aprovação da receita, quando houver item que a exija.</li>
+    <li><b>Termolábil e tópico:</b> defina embalagem e restrição de modal para creme e solução; verão brasileiro estraga formulação em caminhão.</li>
+    <li><b>Frete grátis</b> por régua de ticket, não irrestrito — margem de manipulado não sustenta frete aberto.</li>
+  </ul>
+</section>
+
+<!-- 12 -->
+<section id="seo">
+  <span class="sec-n">12 · Aquisição orgânica</span>
+  <h2>SEO: o ativo é a página de ativo</h2>
+  <p>Saúde é território YMYL — o Google exige sinal de autoridade e penaliza conteúdo sem responsável técnico. A boa notícia: isso favorece quem tem farmacêutico de verdade e elimina o concorrente que só fez dropshipping de suplemento.</p>
+
+  <h3>Três camadas de conteúdo</h3>
+  <ul>
+    <li><b>Hub de objetivo</b> (<code>/emagrecimento</code>) — dispute o termo comercial amplo. Texto de categoria com 400–600 palavras acima ou abaixo da grade, links para os ativos.</li>
+    <li><b>Página de ativo</b> (<code>/ativos/morosil</code>, <code>/ativos/creatina</code>, <code>/ativos/vitamina-d3</code>) — <b>a camada mais valiosa e a mais negligenciada.</b> O que é, mecanismo, evidência, dose usual, com o que combina, quem não deve usar, e os produtos da casa que contêm o ativo. Captura busca informacional de alta intenção e alimenta link interno para PDP.</li>
+    <li><b>Blog</b> — dúvidas reais: "manipulado é confiável?", "vitamina D manipulada ou industrializada?", "quanto tempo para sentir efeito de creatina". Cada post com autor farmacêutico, CRF, data de publicação e <b>data de revisão técnica</b>.</li>
+  </ul>
+
+  <h3>Técnico</h3>
+  <ul>
+    <li><code>Product</code> + <code>Offer</code> + <code>AggregateRating</code> + <code>FAQPage</code> + <code>Organization</code> com <code>Pharmacy</code> e dados do RT.</li>
+    <li>URL curta e estável (<code>/p/slug</code>), canonical resolvendo filtro de PLP, paginação indexável, sitemap segmentado.</li>
+    <li>Core Web Vitals: imagem em AVIF/WebP com dimensão fixa, fonte com <code>display:swap</code>, LCP abaixo de 2,5 s no 4G. Tráfego é majoritariamente mobile.</li>
+    <li><b>Não indexe</b> landing de campanha com linguagem promocional agressiva — além do risco regulatório, canibaliza o hub.</li>
+  </ul>
+  <p class="sub">Pago: Google Shopping tem restrição para suplemento e é vedado para medicamento sob prescrição; Meta reprova criativo com antes-e-depois e apelo a insegurança corporal. Planeje criativo dentro da regra desde o briefing — reprovação em massa de anúncio derruba a Fase 2.</p>
+</section>
+
+<!-- 13 -->
+<section id="design">
+  <span class="sec-n">13 · Identidade</span>
+  <h2>Direção visual</h2>
+  <p>O visual dominante da categoria é branco clínico com verde saturado, ou fundo escuro com neon de suplemento esportivo. O primeiro não transmite nada; o segundo lê como academia, não como laboratório. Proposta: <b>farmacêutico de verdade</b> — vidro âmbar, verde garrafa, rótulo de apotecário, tipografia com peso técnico.</p>
+
+  <div class="swatches">
+    <div class="sw"><i style="background:#15201B"></i><b>Tinta</b><span>#15201B</span></div>
+    <div class="sw"><i style="background:#1F4438"></i><b>Garrafa</b><span>#1F4438</span></div>
+    <div class="sw"><i style="background:#9E6408"></i><b>Âmbar</b><span>#9E6408</span></div>
+    <div class="sw"><i style="background:#F4F5F1"></i><b>Rótulo</b><span>#F4F5F1</span></div>
+    <div class="sw"><i style="background:#8C2F22"></i><b>Alerta</b><span>#8C2F22</span></div>
+  </div>
+  <ul>
+    <li><b>Âmbar</b> é o acento único: preço, CTA, selo. Nada mais compete com ele.</li>
+    <li><b>Garrafa</b> para superfície institucional e blocos de confiança. <b>Alerta</b> exclusivo de advertência e contraindicação — cor semântica não se gasta em decoração.</li>
+    <li><b>Tipografia:</b> um slab com peso técnico para título (Zilla Slab ou similar), uma sans neutra para corpo, <b>mono para dose, composição e código</b>. Mono na tabela de composição faz o número alinhar e dá ao rótulo a leitura de documento técnico — e é, sem custo algum, a coisa que mais faz o site parecer farmácia e não loja.</li>
+    <li><b>Fotografia:</b> frasco real, pesagem, bancada. Zero banco de imagens com modelo sorrindo de roupa de treino.</li>
+    <li><b>Mobile-first de verdade:</b> 75–85% do tráfego. Preço, parcela e CTA na primeira tela do produto, sempre.</li>
+  </ul>
+</section>
+
+<!-- 14 -->
+<section id="metricas">
+  <span class="sec-n">14 · Medição</span>
+  <h2>Métricas e metas de largada</h2>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>Indicador</th><th>Meta mês 3</th><th>Meta mês 12</th><th>Por que importa aqui</th></tr></thead>
+    <tbody>
+      <tr><td>Conversão da loja</td><td class="num">0,8%</td><td class="num">1,6–2,2%</td><td>Referência de farma/suplemento no Brasil</td></tr>
+      <tr><td>Ticket médio</td><td class="num">R$ 160</td><td class="num">R$ 240</td><td>Sobe com pack e duração, não com desconto</td></tr>
+      <tr><td>Receita de assinatura</td><td class="num">—</td><td class="num">25–35%</td><td>É o que tira a operação da dependência de mídia paga</td></tr>
+      <tr><td>Recompra em 90 dias</td><td class="num">15%</td><td class="num">35%</td><td>O melhor sinal de qualidade real do produto</td></tr>
+      <tr><td>SLA de triagem de receita</td><td class="num">&lt; 4 h úteis</td><td class="num">&lt; 2 h úteis</td><td>Gargalo direto de faturamento</td></tr>
+      <tr><td>Abandono de checkout</td><td class="num">&lt; 70%</td><td class="num">&lt; 55%</td><td>Mede se prazo e receita foram comunicados antes</td></tr>
+      <tr><td>Custo de aquisição</td><td class="num">&lt; 35% do ticket</td><td class="num">&lt; 22%</td><td>Acima de 40% a margem de manipulado não fecha</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>GA4 com e-commerce completo, mais <b>eventos próprios da categoria</b>: <code>receita_enviada</code>, <code>receita_aprovada</code>, <code>receita_recusada_motivo</code>, <code>assinatura_criada</code>, <code>prazo_visualizado</code>. Sem esses cinco você não sabe onde o funil vaza. Consentimento de cookie com bloqueio prévio de tag, e dado de saúde <b>nunca</b> em parâmetro de analytics.</p>
+</section>
+
+<!-- 15 -->
+<section id="roadmap">
+  <span class="sec-n">15 · Execução</span>
+  <h2>Roadmap em quatro fases</h2>
+  <p>Sequência real de dependência: nada na Fase 2 pode começar antes da Fase 1 fechar, porque cada fase só existe se a anterior validou demanda.</p>
+
+  <div class="phase">
+    <div class="phase-k"><b>Fase 1</b>semanas 1–6<br>vender</div>
+    <div class="phase-b">
+      <h4>Loja mínima vendável, só isentos de prescrição</h4>
+      <ul>
+        <li>Regularização: AFE com endereço do site, RT designado, aviso de canal único, políticas redigidas por advogado</li>
+        <li>SaaS no ar; modelo de composição já no formato definitivo (semana 1 — isto é o que não se refaz depois)</li>
+        <li>60–100 SKUs nos quatro hubs principais + 3 packs com landing própria</li>
+        <li>Pix e cartão até 10×, frete integrado, prazo duplo comunicado, 18+ e LGPD</li>
+        <li>WhatsApp de orientação farmacêutica</li>
+      </ul>
+    </div>
+  </div>
+  <div class="phase">
+    <div class="phase-k"><b>Fase 2</b>semanas 7–16<br>reter</div>
+    <div class="phase-b">
+      <h4>Recorrência e conteúdo</h4>
+      <ul>
+        <li>Assinatura com autogestão completa e lembrete de recompra calculado pela posologia</li>
+        <li>30 páginas de ativo + blog com autoria e revisão técnica</li>
+        <li>Avaliações com moderação por eficácia; régua de carrinho abandonado e pós-venda</li>
+        <li>Mídia paga em busca de marca e de ativo — criativo dentro da RDC 96/2008</li>
+      </ul>
+    </div>
+  </div>
+  <div class="phase">
+    <div class="phase-k"><b>Fase 3</b>semanas 17–30<br>escalar</div>
+    <div class="phase-b">
+      <h4>Fluxo de receita e catálogo tarjado</h4>
+      <ul>
+        <li>Upload cifrado, painel de triagem do RT, máquina de estados do pedido, captura condicionada</li>
+        <li>Receita salva e reaproveitada em recompra; SLA medido e publicado</li>
+        <li>Abertura do catálogo sob prescrição simples, após parecer do RT e do advogado sanitarista</li>
+        <li>Avaliação da migração para headless — decidida por dado, não por vontade</li>
+      </ul>
+    </div>
+  </div>
+  <div class="phase">
+    <div class="phase-k"><b>Fase 4</b>mês 8+<br>expandir</div>
+    <div class="phase-b">
+      <h4>Marca e canais</h4>
+      <ul>
+        <li>Sub-marcas por vertical (derma, nutri) sobre a mesma base de catálogo</li>
+        <li>App com recompra em um toque e lembrete de posologia — usuário de assinatura é quem justifica</li>
+        <li>Linhas exclusivas com nome próprio; programa de indicação profissional para prescritores</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Ordem de grandeza de investimento</h3>
+  <ul>
+    <li><b>Fase 1</b> — R$ 18–45 mil (plataforma, identidade, fotografia real, 100 SKUs cadastrados, jurídico). Recorrente R$ 300–900/mês.</li>
+    <li><b>Fase 2</b> — R$ 15–35 mil (assinatura, conteúdo, 30 páginas de ativo) + mídia à parte.</li>
+    <li><b>Fase 3</b> — R$ 40–120 mil se headless; R$ 15–30 mil se fluxo de receita sobre o SaaS.</li>
+  </ul>
+  <p class="sub">Faixas para orçamento comparativo, não proposta. Variam muito com fotografia própria, volume de SKU e se há equipe interna.</p>
+</section>
+
+<!-- 16 -->
+<section id="riscos">
+  <span class="sec-n">16 · Riscos</span>
+  <h2>O que pode derrubar o projeto</h2>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>Risco</th><th>Impacto</th><th>Mitigação</th></tr></thead>
+    <tbody>
+      <tr><td><b>Fiscalização sanitária</b> por venda remota de tarjado ou propaganda irregular</td><td>Interdição do site, multa, perda de AFE</td><td>Fase 1 sem tarjado; guia de redação como validação de campo no CMS; parecer do RT arquivado antes de publicar SKU</td></tr>
+      <tr><td><b>Vazamento de receita ou exame</b></td><td>Dado sensível: sanção de LGPD e destruição de reputação</td><td>Bucket cifrado e segregado, URL assinada, acesso só do RT, trilha de auditoria, retenção definida</td></tr>
+      <tr><td><b>Gargalo de manipulação</b> em pico de campanha</td><td>Atraso em massa, chargeback, reclamação pública</td><td>Capacidade diária declarada no sistema; pausar SKU automaticamente ao estourar; campanha dimensionada pela bancada, não pela mídia</td></tr>
+      <tr><td><b>Reprovação de anúncio</b> em Meta e Google</td><td>Aquisição paga inviável; Fase 2 travada</td><td>Criativo conservador desde o briefing; peso em SEO e conteúdo desde a Fase 1</td></tr>
+      <tr><td><b>Guerra de preço</b> com quem promete resultado</td><td>Margem comprimida</td><td>Competir em prazo, atendimento farmacêutico e transparência de composição — não em promessa</td></tr>
+      <tr><td><b>Devolução de medicamento</b></td><td>Conflito entre CDC e restrição sanitária de retorno</td><td>Política escrita por advogado, exibida antes do pagamento; crédito em vez de retorno físico quando cabível</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 17 -->
+<section id="perguntas">
+  <span class="sec-n">17 · Próximo passo</span>
+  <h2>O que preciso saber para detalhar</h2>
+  <p>Este plano assume um entrante novo, sem loja física, começando por catálogo isento de prescrição. As respostas abaixo mudam o roadmap — as três primeiras mudam bastante.</p>
+  <ol class="asks">
+    <li><b>O laboratório já existe e está regularizado?</b> AFE, licença sanitária, RT designado e capacidade de manipulação — ou o site vem antes da operação? Isso define se a Fase 1 é de 6 ou de 26 semanas.</li>
+    <li><b>Manipulação própria ou terceirizada?</b> Muda prazo prometido, margem, controle de qualidade e o que se pode afirmar sobre o processo.</li>
+    <li><b>Catálogo de largada:</b> só suplemento e dermocosmético, ou já com fórmula sob prescrição? Recomendo o primeiro, e quero confirmar.</li>
+    <li><b>Orçamento e prazo</b> para a Fase 1 — decide SaaS versus headless mais do que qualquer argumento técnico.</li>
+    <li><b>Existe equipe técnica</b> ou tudo será contratado? Headless sem manutenção constante vira dívida.</li>
+    <li><b>Área de entrega inicial</b> — nacional ou regional? Afeta frete, prazo e a régua de frete grátis.</li>
+    <li><b>Marca e domínio</b> já definidos? Se ainda não, a identidade da seção 13 pode ser desenvolvida junto com a nomenclatura.</li>
+  </ol>
+  <p>Respondidas essas, o passo natural é escolher um dos três: <b>(a)</b> wireframe navegável da home, PLP e PDP; <b>(b)</b> especificação técnica do fluxo de receita, pronta para implementação; <b>(c)</b> a loja da Fase 1 em pé, com catálogo de exemplo.</p>
+</section>
+
+<footer>
+  <span>Plano de produto · v1 · 11 set 2026</span>
+  <span>Referência: oficialfarma.com.br · verificação regulatória pendente com RT e advogado sanitarista</span>
+</footer>
+
+</main>
+</div>
+</div>
