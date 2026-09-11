@@ -270,14 +270,14 @@ footer{
 <div class="wrap">
 
 <header class="masthead">
-  <p class="eyebrow">Plano de produto · e-commerce de manipulados · v1</p>
+  <p class="eyebrow">Plano de produto · e-commerce de manipulados · v2</p>
   <h1>Projeto Farmácia de Manipulação</h1>
-  <p class="lede">Planejamento completo de um site de venda online de fórmulas manipuladas, suplementos vitamínicos e dermocosméticos para público adulto (18+), tomando a <b>Oficialfarma</b> como referência de mercado — inclusive no que ela faz que você <em>não</em> deve copiar.</p>
+  <p class="lede">Plano do e-commerce de um <b>laboratório de manipulação já em operação há anos</b>, que agora monta uma frente digital forte. Duas naturezas de venda no mesmo site: <b>catálogo pronto</b> (suplementos, vitaminas, dermocosméticos) e <b>fórmula sob prescrição médica</b>. Público adulto, 18+. Referência de mercado: Oficialfarma — inclusive no que ela faz que você <em>não</em> deve copiar.</p>
   <div class="meta">
-    <span><b>Objetivo</b> — venda online (D2C)</span>
+    <span><b>Laboratório</b> — em operação, AFE e RT ativos</span>
+    <span><b>Catálogo</b> — suplementos + medicamentos manipulados</span>
     <span><b>Público</b> — adultos 18+</span>
-    <span><b>Modelo</b> — oficialfarma.com.br</span>
-    <span><b>Data</b> — 11/09/2026</span>
+    <span><b>Versão</b> — v2 · 11/09/2026</span>
   </div>
 </header>
 
@@ -311,38 +311,48 @@ footer{
 <!-- 01 -->
 <section id="decisoes">
   <span class="sec-n">01 · Ponto de partida</span>
-  <h2>As seis decisões que definem o site</h2>
-  <p>Tudo o mais é consequência destas seis. Se alguma mudar, o plano muda.</p>
+  <h2>As oito decisões que definem o site</h2>
+  <p>Com o laboratório já em operação e medicamento manipulado dentro do escopo, o projeto deixa de ser "abrir uma loja" e passa a ser "levar uma operação farmacêutica existente para o digital". Tudo o mais é consequência destas oito.</p>
   <dl class="decisions">
     <div class="dec">
+      <dt>Natureza da venda</dt>
+      <dd>Duas portas, um site
+        <em>O laboratório vende duas coisas incompatíveis no mesmo lugar: SKU pronto, que vai ao carrinho com preço, e fórmula magistral única, que não tem preço antes de o farmacêutico ler a receita. São dois fluxos, duas entidades de dados e duas páginas de entrada. Tratar a segunda como "produto com variação" é o erro que trava o projeto no mês três.</em></dd>
+    </div>
+    <div class="dec">
       <dt>Eixo de navegação</dt>
-      <dd>Por objetivo, não por forma farmacêutica
-        <em>O cliente não procura "cápsula 500 mg", procura "emagrecer", "render mais no treino", "parar de sentir cansaço". A taxonomia principal é de objetivos; ativo e forma são filtros.</em></dd>
+      <dd>Objetivo no catálogo, especialidade na receita
+        <em>Quem compra por conta busca "emagrecer", "render no treino", "parar de sentir cansaço". Quem chega com receita pensa em dermatologia, hormonal, pediatria, ortomolecular. Público diferente, vocabulário diferente, navegação diferente.</em></dd>
     </div>
     <div class="dec">
-      <dt>Unidade de venda</dt>
+      <dt>Faixa sanitária</dt>
+      <dd>É campo do cadastro, não julgamento do atendente
+        <em>Três faixas com regra no código: isento vende livre; tarjado sem retenção vende com receita validada; item com retenção obrigatória ou da Portaria 344/98 não é publicável. O sistema decide o fluxo — pessoa cansada erra.</em></dd>
+    </div>
+    <div class="dec">
+      <dt>Plataforma</dt>
+      <dd>Headless desde o início, com Fase 0 de 3 semanas
+        <em>O laboratório já fatura offline: não existe pressa existencial que justifique montar em SaaS e migrar depois. Captura condicionada de pagamento e orçamento de fórmula não cabem em Tray ou Nuvemshop, e migrar catálogo, URL, SEO e checkout custa mais que as 8 semanas extras. Antes disso, uma Fase 0 barata já captura a demanda magistral.</em></dd>
+    </div>
+    <div class="dec">
+      <dt>Unidade de venda no catálogo</dt>
       <dd>Packs com nome próprio, não SKUs soltos
-        <em>É o que sustenta o ticket da Oficialfarma: Pack Emagrecimento R$ 239, Pack Hipertrofia R$ 344. Um pack tem página de vendas própria, não é "kit" gerado automaticamente.</em></dd>
-    </div>
-    <div class="dec">
-      <dt>Catálogo de largada</dt>
-      <dd>Só isentos de prescrição na Fase 1
-        <em>Suplementos, vitaminas, fitoterápicos e dermocosméticos vendem sem receita. Manipulado com tarja entra na Fase 3, com triagem farmacêutica pronta — não antes.</em></dd>
+        <em>É o que sustenta o ticket no modelo de referência: Pack Emagrecimento R$ 239, Pack Hipertrofia R$ 344. Cada pack tem landing de vendas própria — não é kit gerado por template.</em></dd>
     </div>
     <div class="dec">
       <dt>Prazo é conteúdo</dt>
       <dd>Manipulado não tem estoque: comunique D+3
-        <em>Cada fórmula é feita depois da compra. O prazo de manipulação aparece na PDP, no carrinho, no checkout e no e-mail — não escondido no rodapé.</em></dd>
+        <em>Cada fórmula é feita depois da compra. Prazo de manipulação e prazo de transporte aparecem separados na PDP, no carrinho, no checkout e no e-mail — nunca escondidos no rodapé.</em></dd>
     </div>
     <div class="dec">
-      <dt>Plataforma</dt>
-      <dd>SaaS na Fase 1, headless quando a receita virar gargalo
-        <em>Tray ou Nuvemshop para vender em 6 semanas. Migração para Next.js + Medusa quando a triagem de receita e a assinatura recorrente exigirem fluxo próprio.</em></dd>
+      <dt>Canal esquecido</dt>
+      <dd>Prescritor é canal, e é o seu mais defensável
+        <em>Anos de operação significam uma carteira de médicos que já prescrevem sua fórmula. Um portal em que o prescritor envia a receita e o paciente paga e recebe em casa é aquisição de custo quase zero — e nenhum concorrente D2C novo consegue copiar, porque não tem a carteira.</em></dd>
     </div>
     <div class="dec">
       <dt>Limite de linguagem</dt>
       <dd>Benefício sim, promessa nunca
-        <em>"Auxilia no controle de peso" é permitido. "Perca 8 kg", antes-e-depois e depoimento de resultado são infração da RDC 96/2008 e passivo de Procon. Esse limite é regra de redação do site inteiro.</em></dd>
+        <em>"Auxilia no controle de peso" é permitido. "Perca 8 kg", antes-e-depois e depoimento de resultado são infração da RDC 96/2008. Com anos de reputação e AFE ativa, você tem muito mais a perder numa autuação que um entrante sem nome.</em></dd>
     </div>
   </dl>
 </section>
@@ -378,15 +388,23 @@ footer{
         <td class="num">R$ 90–200</td>
         <td>Hub Saúde + fluxo de receita</td>
       </tr>
+      <tr>
+        <td><b>Paciente com prescrição</b><br><span class="sub">adulto de qualquer faixa, chega com receita de dermatologista, endocrinologista, pediatra ou ortomolecular</span></td>
+        <td>Indicação do próprio prescritor, busca pelo nome do laboratório, ou o consultório envia a receita</td>
+        <td>Fidelidade à fórmula escrita e confiança no laboratório — <b>não compara preço</b>. Decide por rapidez de resposta e clareza</td>
+        <td class="num">R$ 120–600</td>
+        <td>Enviar receita + portal do prescritor</td>
+      </tr>
     </tbody>
   </table>
   </div>
 
   <h3>Consequências de projeto</h3>
   <ul>
-    <li><b>Perfil 2 é o que paga a operação no ano 2.</b> É o único naturalmente recorrente — por isso assinatura entra na Fase 2, não na Fase 4.</li>
-    <li><b>Perfil 3 é o que dá legitimidade ao domínio.</b> Conteúdo técnico revisado por farmacêutico serve esse perfil e, de tabela, resolve o E-E-A-T do Google para as buscas do perfil 1.</li>
-    <li><b>Público 18+ é requisito, não detalhe.</b> Ativos como ioimbina, cafeína em dose alta e vasodilatadores não podem ser vendidos a menor de idade — confirmação de idade no primeiro acesso e data de nascimento obrigatória no cadastro.</li>
+    <li><b>Perfil 4 é o de maior LTV e o menos sensível a preço</b> — e é a base que o laboratório já atende no balcão. O site não precisa convencê-lo de nada: precisa não atrapalhar. Resposta rápida, orçamento claro, entrega em casa. É o perfil com maior retorno por real investido em desenvolvimento, e o que quase todo projeto de e-commerce farmacêutico esquece porque não caberia num template.</li>
+    <li><b>Perfil 2 é o que paga a mídia no ano 2</b> — o único naturalmente recorrente. Por isso assinatura entra na Fase 2, não na Fase 4.</li>
+    <li><b>Perfil 3 é a ponte entre os dois mundos</b>: chega buscando vitamina e, atendido bem, volta com receita. Conteúdo técnico revisado por farmacêutico serve esse perfil e, de tabela, resolve o E-E-A-T do Google para as buscas comerciais do perfil 1.</li>
+    <li><b>Público 18+ é requisito, não detalhe.</b> Ioimbina, cafeína em dose alta e vasoativos não podem ser vendidos a menor. Confirmação de idade no primeiro acesso e data de nascimento obrigatória no cadastro. <span class="sub">Exceção a desenhar: fórmula pediátrica é comprada por adulto responsável, com receita — o gate é do comprador, não do paciente.</span></li>
   </ul>
 </section>
 
@@ -411,10 +429,10 @@ footer{
   <h3>Não copiar</h3>
   <div class="callout">
     <span class="tag">Exposição regulatória do modelo</span>
-    <p>O site de referência vende packs que contêm <b>tadalafil</b> — medicamento sob prescrição, tarja vermelha — dentro de "pack de desempenho", e usa linguagem superlativa ("o termogênico mais eficaz do mercado", "vasodilatador mais potente da atualidade") junto de promessa de resultado. Também estampa depoimento de resultado em produto.</p>
-    <p>Isso é <b>infração da RDC 96/2008</b> (propaganda de medicamento) e, no caso de tarjado por meio remoto, expõe a autorização de funcionamento. Um entrante novo é alvo fácil: não tem histórico, nem estrutura jurídica, nem volume para absorver interdição. <b>Entre com catálogo isento de prescrição e linguagem conservadora.</b> Você compete em confiança, prazo e atendimento — não em promessa.</p>
+    <p>O site de referência vende packs que contêm <b>tadalafil</b> — medicamento de tarja vermelha — empacotado como "pack de desempenho", ao lado de linguagem superlativa ("o termogênico mais eficaz do mercado", "o vasodilatador mais potente da atualidade") e depoimento de resultado.</p>
+    <p>Separe as duas coisas: <b>vender tarjado online é legítimo</b> com receita validada pelo farmacêutico — é justamente o que você vai fazer. <b>Vender tarjado dentro de um pack, sem triagem, com promessa de resultado</b>, é infração da RDC 96/2008 e coloca a AFE em risco. Seu laboratório tem anos de reputação construída: é exatamente o ativo que uma autuação destrói e que um entrante sem nome não tem a perder. <b>Medicamento sai pela porta da receita, nunca pela porta do pack.</b></p>
   </div>
-  <p class="sub">O mesmo raciocínio vale para "ioimbina", "Tadalafil com Arginina" e compostos hormonais: são o que dá margem alta no modelo de referência e são exatamente o que atrai fiscalização. Deixe fora da Fase 1 e decida com o farmacêutico responsável e um advogado sanitarista antes de incluir.</p>
+  <p class="sub">O mesmo raciocínio vale para ioimbina, associações com tadalafil e compostos hormonais: são o que dá margem alta no modelo de referência e o que atrai fiscalização quando vendido sem prescrição. No seu caso eles podem existir — <b>classificados na faixa correta e atrás da triagem do RT</b>, com o parecer arquivado antes de o SKU ir ao ar.</p>
 </section>
 
 <!-- 04 -->
@@ -430,7 +448,7 @@ footer{
       <tr>
         <td><b>RDC 67/2007</b><br><span class="sub">Boas práticas de manipulação</span></td>
         <td>Veda comercialização e divulgação de manipulados por meio remoto sem prescrição; manipulação é individualizada, não há "estoque de fórmula"</td>
-        <td>Catálogo Fase 1 restrito a isentos; toda fórmula com tarja só via upload de receita; texto "manipulação individualizada" no produto</td>
+        <td>Fórmula com tarja só sai pela porta da receita, com triagem do RT antes da captura do pagamento; catálogo de compra direta restrito a isentos; texto "manipulação individualizada" em todo produto</td>
         <td><span class="chip chip-block">bloqueante</span></td>
       </tr>
       <tr>
@@ -443,6 +461,12 @@ footer{
         <td><b>Portaria 344/1998</b><br><span class="sub">Substâncias sob controle especial</span></td>
         <td>Psicotrópicos, anorexígenos e afins não se dispensam remotamente</td>
         <td>Lista de bloqueio no cadastro de produto: SKU marcado como controlado não pode ser publicado</td>
+        <td><span class="chip chip-block">bloqueante</span></td>
+      </tr>
+      <tr>
+        <td><b>RDC 20/2011</b><br><span class="sub">Antimicrobianos</span></td>
+        <td>Exige retenção física da receita na dispensação</td>
+        <td>Faixa sanitária própria: item com retenção obrigatória não é publicável para venda remota — encaminhe ao balcão</td>
         <td><span class="chip chip-block">bloqueante</span></td>
       </tr>
       <tr>
@@ -485,6 +509,35 @@ footer{
   </table>
   </div>
 
+  <h3>As três faixas que governam o catálogo</h3>
+  <p>Esta é a tradução prática de tudo acima, e é o campo mais importante do cadastro de produto. Uma classificação errada aqui é o único erro deste projeto capaz de custar a autorização de funcionamento do laboratório.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>Faixa</th><th>Exemplos</th><th>Venda remota</th><th>Comportamento no sistema</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="chip chip-rec">livre</span><br><b>Isento de prescrição</b></td>
+        <td>Suplemento, vitamina, mineral, fitoterápico, dermocosmético, fórmula padronizada isenta</td>
+        <td>Permitida</td>
+        <td>Vai ao carrinho com preço. Checkout normal.</td>
+      </tr>
+      <tr>
+        <td><span class="chip chip-req">com receita</span><br><b>Tarjado sem retenção</b></td>
+        <td>Hormônio bioidêntico, fórmula dermatológica com ativo tarjado, medicamento de uso contínuo, associações prescritas</td>
+        <td>Permitida <b>com prescrição validada pelo RT</b></td>
+        <td>Upload obrigatório antes do pagamento; captura condicionada à aprovação; receita fica na conta e reaproveita na recompra.</td>
+      </tr>
+      <tr>
+        <td><span class="chip chip-block">não publicar</span><br><b>Retenção obrigatória ou Portaria 344/98</b></td>
+        <td>Antimicrobiano, psicotrópico, anorexígeno, entorpecente, retinoide sistêmico</td>
+        <td>Vedada por meio remoto</td>
+        <td>SKU bloqueado para publicação pelo próprio cadastro. Página informa e encaminha ao balcão — o que ainda é venda, só não é online.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Essas faixas viram o campo <code>faixa_sanitaria</code>. O sistema escolhe o fluxo por ele; ninguém decide no atendimento. E o item da terceira faixa não vira página morta: vira captação para o balcão, com endereço, horário e WhatsApp.</p>
+
   <p class="sub">Observação útil: existe litígio em curso sobre a validade da vedação da RDC 67/2007 quanto a produtos <em>isentos</em> de prescrição, com decisões que reconhecem excesso de poder regulamentar. Isso pode ampliar seu espaço — mas é decisão de risco jurídico com liminar nominal, não premissa de projeto. Construa dentro da norma como ela está escrita.</p>
 </section>
 
@@ -492,46 +545,48 @@ footer{
 <section id="ia">
   <span class="sec-n">05 · Arquitetura de informação</span>
   <h2>Mapa do site</h2>
-  <p>Três eixos de navegação sobre o mesmo catálogo: <b>objetivo</b> (menu principal), <b>ativo</b> (SEO e busca interna) e <b>pessoa</b> (Mulher / Homem / 40+). Um produto vive em vários — por isso a taxonomia é de tags, não de pasta.</p>
+  <p>A home tem <b>duas portas</b>, não um banner: <em>comprar do catálogo</em> e <em>enviar minha receita</em>. Quem sabe o que quer comprar e quem chega com uma prescrição na mão precisam de caminhos separados desde o primeiro clique — e a segunda porta é a que traduz para o digital o que o laboratório já faz há anos.</p>
+  <p>Dentro do catálogo, três eixos sobre o mesmo acervo: <b>objetivo</b> (menu), <b>ativo</b> (SEO e busca interna) e <b>pessoa</b> (Mulher / Homem). Do lado da receita, o eixo é <b>especialidade do prescritor</b>. Um produto vive em vários — por isso a taxonomia é de tags, não de pasta.</p>
 
   <div class="tree">
-<pre><b>/</b>                              home — objetivos, mais buscados, packs, prova de credibilidade
+<pre><b>/</b>                              home — duas portas: comprar do catálogo · enviar minha receita
 │
-├─ <b>/emagrecimento</b>               <i>hub · termogênicos, controle de apetite, absorção de gordura, drenagem</i>
-├─ <b>/desempenho-fisico</b>           <i>hub · pré-treino, massa muscular, força e resistência, recuperação, energia</i>
-├─ <b>/saude</b>                       <i>hub · vitaminas e minerais, imunidade, sono, intestino, fígado, saúde mental</i>
-├─ <b>/beleza</b>                      <i>hub · pele, cabelo e unhas, colágeno, anti-idade</i>
-├─ <b>/queda-de-cabelo</b>             <i>hub dedicado — volume de busca justifica sair de /beleza</i>
-├─ <b>/dermocosmeticos</b>             <i>hub · uso tópico: cremes, séruns, loções</i>
-├─ <b>/mulher</b>  ·  <b>/homem</b>           <i>curadoria por pessoa, montada sobre os hubs acima</i>
+├─ <i>CATÁLOGO — produto pronto, preço na vitrine, compra direta</i>
+│  ├─ <b>/emagrecimento</b>            <i>hub · termogênicos, apetite, absorção de gordura, drenagem</i>
+│  ├─ <b>/desempenho-fisico</b>        <i>hub · pré-treino, massa muscular, força, recuperação, energia</i>
+│  ├─ <b>/saude</b>                    <i>hub · vitaminas e minerais, imunidade, sono, intestino, fígado</i>
+│  ├─ <b>/beleza</b>  ·  <b>/queda-de-cabelo</b>  ·  <b>/dermocosmeticos</b>
+│  ├─ <b>/mulher</b>  ·  <b>/homem</b>       <i>curadoria por pessoa, montada sobre os hubs</i>
+│  ├─ <b>/packs</b> → <b>/packs/[slug]</b>   <i>landing de vendas do pack, não template de listagem</i>
+│  ├─ <b>/p/[slug]</b>                 <i>página de produto (PDP)</i>
+│  └─ <b>/ativos/[slug]</b>            <i>Morosil, creatina, vitamina D3 — ativo de SEO</i>
 │
-├─ <b>/packs</b>                       índice de packs
-│   └─ <b>/packs/[slug]</b>            landing de vendas do pack (página própria, não template de PLP)
+├─ <i>FÓRMULA SOB RECEITA — o que o laboratório faz há anos, agora online</i>
+│  ├─ <b>/formula-sob-receita</b>      <i>enviar prescrição · como funciona · prazo · o que não vendemos online</i>
+│  ├─ <b>/especialidades</b>           <i>índice por especialidade do prescritor</i>
+│  │   └─ <b>/especialidades/[slug]</b>  <i>dermatologia · hormonal · pediatria · ortomolecular · geriatria</i>
+│  ├─ <b>/orcamento/[id]</b>           <i>orçamento da fórmula com validade e pagamento — link privado, não indexável</i>
+│  └─ <b>/prescritores</b>             <i>portal B2B: o médico envia, o paciente paga e recebe (Fase 3)</i>
 │
-├─ <b>/p/[slug]</b>                    página de produto (PDP)
-├─ <b>/ativos/[slug]</b>               <i>página de ativo — Morosil, creatina, vitamina D3, colágeno: ativo de SEO</i>
-│
-├─ <b>/assinatura</b>                  como funciona a recorrência, desconto, pausa e cancelamento
-├─ <b>/receita</b>                     enviar receita · como funciona a avaliação farmacêutica
+├─ <b>/assinatura</b>                  recorrência: desconto, pausa, troca de data, cancelamento
 ├─ <b>/atendimento-farmaceutico</b>    <i>exigência da RDC 44/2009 — canal, horário, nome e CRF do RT</i>
 │
-├─ <b>/conta</b>                       pedidos · receitas · assinaturas · endereços · dados e consentimentos
-├─ <b>/carrinho</b>  →  <b>/checkout</b>      <i>checkout em etapa única com validação de receita antes do pagamento</i>
+├─ <b>/conta</b>                       pedidos · <b>receitas</b> · <b>orçamentos</b> · assinaturas · dados e consentimentos
+├─ <b>/carrinho</b> → <b>/checkout</b>       <i>captura condicionada à triagem quando houver item tarjado</i>
 │
-├─ <b>/blog</b>                        conteúdo revisado tecnicamente, com autor e data de revisão
-│   └─ <b>/blog/[slug]</b>
+├─ <b>/blog</b> → <b>/blog/[slug]</b>        conteúdo com autor farmacêutico e data de revisão técnica
 │
-└─ institucional
-   ├─ <b>/sobre</b>                    laboratório, equipamentos, controle de qualidade, RT
-   ├─ <b>/qualidade</b>                <i>como uma fórmula é feita: pesagem, encapsulação, laudo, rastreabilidade</i>
+└─ <i>institucional</i>
+   ├─ <b>/sobre</b>                    <i>anos de operação, laboratório, equipamentos, equipe, RT</i>
+   ├─ <b>/qualidade</b>                <i>como uma fórmula é feita: pesagem, encapsulação, laudo, lote</i>
    ├─ <b>/entrega</b>                  prazo de manipulação + prazo de transporte, separados
-   ├─ <b>/trocas-e-devolucoes</b>      ·  <b>/privacidade</b>  ·  <b>/termos</b>  ·  <b>/cookies</b>
-   └─ <b>/contato</b>                  ·  <b>/mapa-do-site</b>
+   ├─ <b>/trocas-e-devolucoes</b>  ·  <b>/privacidade</b>  ·  <b>/termos</b>  ·  <b>/cookies</b>
+   └─ <b>/contato</b>  ·  <b>/mapa-do-site</b>
 </pre>
   </div>
 
   <h3>Menu principal</h3>
-  <p>Sete itens, dois níveis, sem mega-menu pesado no mobile: <span class="mono">Emagrecimento · Desempenho · Saúde · Beleza · Cabelo · Packs · Assinatura</span>. Busca sempre visível no topo — em catálogo de manipulados, busca é o segundo caminho mais usado depois do hub.</p>
+  <p>Seis itens de catálogo mais um botão destacado, visualmente diferente dos demais: <span class="mono">Emagrecimento · Desempenho · Saúde · Beleza · Cabelo · Packs</span> — e, à direita, <b>Enviar minha receita</b>. Busca sempre visível no topo: em catálogo de manipulados, busca é o segundo caminho mais usado depois do hub. No mobile, dois níveis e nenhum mega-menu.</p>
 
   <h3>Filtros da listagem (PLP)</h3>
   <ul>
@@ -559,7 +614,10 @@ footer{
       <tr><td class="mono">posologia</td><td>texto</td><td>Bloco "Como usar"</td></tr>
       <tr><td class="mono">alegacoes_autorizadas[]</td><td>lista fechada</td><td><b>Não é texto livre.</b> Seleção da lista da IN 28/2018 — barreira contra alegação irregular</td></tr>
       <tr><td class="mono">advertencias[]</td><td>lista + texto</td><td>Contraindicação, gestante/lactante, interação, aviso de cafeína</td></tr>
-      <tr><td class="mono">exige_receita</td><td>enum</td><td><code>nao · sim_simples · sim_controlada</code> — <code>sim_controlada</code> bloqueia publicação</td></tr>
+      <tr><td class="mono">tipo_venda</td><td>enum</td><td><code>catalogo</code> ou <code>sob_receita</code> — define qual dos dois fluxos o item usa</td></tr>
+      <tr><td class="mono">faixa_sanitaria</td><td>enum</td><td><code>isento · tarjado_sem_retencao · retencao_ou_344</code>. O último <b>bloqueia publicação</b> — regra no código, não no manual</td></tr>
+      <tr><td class="mono">tarja, dcb_dci</td><td>texto</td><td>Tarja e denominação comum do ativo — rastreabilidade e conferência do RT</td></tr>
+      <tr><td class="mono">especialidade[]</td><td>tags</td><td>Dermatologia, hormonal, pediatria, ortomolecular — navegação do lado da receita</td></tr>
       <tr><td class="mono">prazo_manipulacao_dias</td><td>inteiro</td><td>Por SKU, não global. Entra na promessa de entrega da PDP e do checkout</td></tr>
       <tr><td class="mono">restricao_18</td><td>booleano</td><td>Estimulante, vasoativo, ioimbina etc.</td></tr>
       <tr><td class="mono">preco, parcelas_max</td><td>decimal</td><td>Preço e a linha "ou N× de R$ X" — ambas exibidas</td></tr>
@@ -584,6 +642,24 @@ footer{
     <div class="ficha-h" style="border-top:1px solid var(--line-strong);border-bottom:none">60 doses · 30 dias · R$ 4,12 por dose</div>
   </div>
   <p class="sub">A última linha — duração e custo por dose — é calculada. É a informação que o cliente recorrente usa para decidir e que o concorrente não dá.</p>
+
+  <h3>A segunda entidade: solicitação de fórmula</h3>
+  <p>Fórmula sob receita <b>não é produto</b>. Não tem preço antes de alguém ler a prescrição, não tem foto, não repete. É um registro de pedido com ciclo próprio, e precisa de tabela própria desde o primeiro dia:</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>Campo</th><th>Tipo</th><th>Uso</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">receita_arquivo</td><td>arquivo cifrado</td><td>Bucket segregado, URL assinada de curta validade. Dado sensível: LGPD art. 11</td></tr>
+      <tr><td class="mono">prescritor</td><td>texto + registro</td><td>Nome e CRM/CRO/CRMV. Alimenta a carteira de prescritores e o portal B2B da Fase 3</td></tr>
+      <tr><td class="mono">receita_data, receita_validade</td><td>data</td><td>O sistema recusa receita vencida — não o atendente</td></tr>
+      <tr><td class="mono">itens_transcritos[]</td><td>relação</td><td>Transcrição da fórmula pelo RT: ativo, quantidade, unidade, forma, quantidade total</td></tr>
+      <tr><td class="mono">orcamento_valor, validade</td><td>decimal, data</td><td>Preço calculado após a leitura, com prazo para o paciente aceitar</td></tr>
+      <tr><td class="mono">status</td><td>enum</td><td>Máquina de estados da seção 08</td></tr>
+      <tr><td class="mono">triado_por, triado_em</td><td>relação, data</td><td>Trilha de auditoria sanitária — quem aprovou o quê e quando</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="sub">Reaproveitamento é o maior ganho de conveniência da operação: fórmula já transcrita e receita dentro da validade geram recompra em um clique, sem reenvio de documento e sem nova triagem completa.</p>
 </section>
 
 <!-- 07 -->
@@ -626,6 +702,16 @@ footer{
   <h3>Landing de pack</h3>
   <p>Página de vendas, não PLP filtrada: problema → o que é o pack → benefícios por item → composição de cada item → como usar o conjunto → advertências → preço do pack com economia contra a soma dos itens → FAQ. Um único CTA, repetido três vezes na descida.</p>
 
+  <h3>Enviar minha receita — a página que o concorrente não tem</h3>
+  <p>É a tradução digital do balcão. Precisa eliminar a insegurança de quem nunca mandou uma receita pela internet, em quatro blocos:</p>
+  <ol>
+    <li><b>Como funciona, em quatro passos com prazo em cada um</b> — envie a receita · o farmacêutico avalia em até 4 h úteis · você recebe o orçamento e decide · manipulamos e entregamos. Prazo declarado em cada etapa, não no fim.</li>
+    <li><b>Upload</b> — foto ou PDF, múltiplos arquivos, direto do celular. Consentimento LGPD específico para dado de saúde, separado do aceite de termos, com linguagem que um adulto entende. Sem cadastro completo antes do upload: pede-se apenas contato, e o resto depois da aprovação.</li>
+    <li><b>O que não vendemos online</b> — dito na própria página, com honestidade: antimicrobiano e controlado exigem receita retida e atendimento presencial. Isso não perde venda, converte em visita ao balcão, e evita a pior experiência possível, que é descobrir o bloqueio depois de pagar.</li>
+    <li><b>Prova de laboratório</b> — anos de operação, número de fórmulas manipuladas, foto da bancada, nome e CRF do RT. O paciente está entregando a prescrição do médico dele a um site: a prova precisa ser explícita.</li>
+  </ol>
+  <p>Página de orçamento (<code>/orcamento/[id]</code>): link privado, <code>noindex</code>, mostrando a fórmula transcrita, o valor, a validade da oferta, o prazo de manipulação e um botão de pagamento. É a página com a maior taxa de conversão do site — e a que mais precisa ser clara, não bonita.</p>
+
   <h3>Carrinho e checkout</h3>
   <ul>
     <li><b>Carrinho</b> — prazo de manipulação por item (o maior manda na promessa do pedido), cupom, frete calculado, upsell de assinatura, aviso de receita pendente.</li>
@@ -641,26 +727,42 @@ footer{
 <!-- 08 -->
 <section id="receita">
   <span class="sec-n">08 · Operação</span>
-  <h2>O fluxo de receita é o coração do sistema</h2>
-  <p>É a parte que nenhuma plataforma de e-commerce entrega pronta e a que decide se o site escala além de suplemento. São estados de pedido, não uma tela: cada transição gera notificação e fica registrada para auditoria sanitária.</p>
+  <h2>Os dois fluxos de receita</h2>
+  <p>Esta é a parte que nenhuma plataforma de e-commerce entrega pronta, e a que decide se o site vende medicamento ou só suplemento. São estados de pedido, não telas: cada transição notifica o cliente e fica registrada para auditoria sanitária.</p>
 
+  <h3>Fluxo A · item tarjado comprado do catálogo</h3>
+  <p>O paciente sabe o que quer, o preço está na vitrine, mas o item exige prescrição.</p>
   <div class="flow">
-    <div class="flow-step"><span class="st">estado 1</span><b>Recebido</b><span>Pedido criado, pagamento autorizado e <em>não</em> capturado.</span></div>
+    <div class="flow-step"><span class="st">estado 1</span><b>Recebido</b><span>Pedido criado, pagamento <b>autorizado e não capturado</b>.</span></div>
     <div class="flow-step"><span class="st">estado 2</span><b>Receita enviada</b><span>Upload em bucket cifrado e segregado. Nunca por e-mail ou WhatsApp.</span></div>
-    <div class="flow-step gate"><span class="st">portão</span><b>Triagem farmacêutica</b><span>RT confere prescritor, CRM/CRO, data, validade, dose e substância. Aprova, pede correção ou recusa.</span></div>
+    <div class="flow-step gate"><span class="st">portão</span><b>Triagem do RT</b><span>Confere prescritor, registro, data, validade, dose e faixa sanitária. Aprova, pede correção ou recusa com motivo.</span></div>
     <div class="flow-step"><span class="st">estado 3</span><b>Aprovado</b><span>Pagamento capturado. Ordem de manipulação emitida.</span></div>
     <div class="flow-step"><span class="st">estado 4</span><b>Em manipulação</b><span>Pesagem, encapsulação, conferência, rótulo com lote.</span></div>
-    <div class="flow-step"><span class="st">estado 5</span><b>Enviado</b><span>Rastreio ao cliente. Receita retida conforme a norma quando aplicável.</span></div>
+    <div class="flow-step"><span class="st">estado 5</span><b>Enviado</b><span>Rastreio ao cliente; receita arquivada conforme a norma.</span></div>
+  </div>
+
+  <h3>Fluxo B · fórmula magistral sob prescrição</h3>
+  <p>O paciente chega com a receita e <b>não existe preço antes da leitura</b>. Este é o fluxo de maior ticket e maior LTV da operação, e o que traz para o digital a carteira que o laboratório já tem.</p>
+  <div class="flow">
+    <div class="flow-step"><span class="st">estado 1</span><b>Solicitação</b><span>Receita enviada com contato. Sem cadastro completo, sem pagamento.</span></div>
+    <div class="flow-step gate"><span class="st">portão</span><b>Triagem e transcrição</b><span>RT lê, valida e transcreve a fórmula em itens. Verifica viabilidade técnica e faixa sanitária.</span></div>
+    <div class="flow-step"><span class="st">estado 2</span><b>Orçamento enviado</b><span>Valor, prazo e validade da oferta, em link privado. Notifica por WhatsApp e e-mail.</span></div>
+    <div class="flow-step"><span class="st">estado 3</span><b>Aceito e pago</b><span>Paciente aprova e paga. Só aqui nasce o pedido financeiro.</span></div>
+    <div class="flow-step"><span class="st">estado 4</span><b>Em manipulação</b><span>Ordem emitida com a transcrição já conferida.</span></div>
+    <div class="flow-step"><span class="st">estado 5</span><b>Enviado</b><span>Rastreio; fórmula salva na conta para recompra em um clique.</span></div>
   </div>
 
   <h4>Regras que precisam estar no código, não no manual</h4>
   <ul>
-    <li>Receita vencida não libera pedido — a validade é campo com data, e o sistema checa.</li>
-    <li>Receita aprovada fica na conta e reaproveita em recompra, dentro da validade. É o maior ganho de conveniência do fluxo.</li>
-    <li>Recusa sempre com motivo em texto e caminho de correção. "Recusado" sem motivo vira ticket e reclamação pública.</li>
-    <li>SLA de triagem visível ao cliente (ex.: até 4 h úteis) e monitorado — é o gargalo que trava o faturamento em pico.</li>
-    <li>Arquivo de receita com retenção definida, acesso restrito ao RT e trilha de auditoria de quem abriu.</li>
+    <li><b>Receita vencida não libera pedido.</b> Validade é campo com data e o sistema checa — não a memória de quem está atendendo.</li>
+    <li><b>Faixa sanitária manda no fluxo.</b> Item de retenção obrigatória ou da Portaria 344/98 nem chega a gerar orçamento: responde com encaminhamento ao balcão.</li>
+    <li><b>Nunca capture pagamento antes da aprovação.</b> Capturar e estornar em massa gera disputa de cartão, custo de adquirente e reclamação pública — e é o erro mais comum de quem adapta e-commerce comum para farmácia.</li>
+    <li><b>Recusa sempre com motivo em texto e caminho de correção.</b> "Recusado" sem explicação vira ticket, e depois vira Reclame Aqui.</li>
+    <li><b>Orçamento tem validade</b> — insumo varia de preço. Expirado, refaz com um clique, sem nova triagem se a receita continua válida.</li>
+    <li><b>SLA de triagem visível e monitorado</b> (ex.: 4 h úteis). É o gargalo direto de faturamento: quando ele estoura, o funil inteiro para, e nenhum aumento de mídia resolve.</li>
+    <li><b>Trilha de auditoria completa</b> — quem abriu cada receita, quando, e o que aprovou. Exigência sanitária e proteção do RT.</li>
   </ul>
+  <p class="sub">Quem faz a triagem hoje no balcão é quem vai fazê-la aqui, na mesma tela e com a mesma responsabilidade. O sistema só precisa entregar a fila organizada, com prazo à vista e a receita legível — e avisar quando a fila estiver crescendo mais rápido do que é consumida.</p>
 </section>
 
 <!-- 09 -->
@@ -703,29 +805,36 @@ footer{
 <section id="stack">
   <span class="sec-n">10 · Tecnologia</span>
   <h2>Stack recomendada</h2>
-  <p><b>Recomendação: comece em SaaS, migre quando a receita for o gargalo.</b> A tentação de começar headless é forte e quase sempre errada — você não sabe ainda qual objetivo converte, e cada semana sem vender custa aprendizado.</p>
+  <p><b>Recomendação: headless desde o início, com uma Fase 0 barata capturando receita em 3 semanas.</b> Essa recomendação mudou quando entrou medicamento no escopo — e vale explicar por quê, porque o conselho de mercado padrão é o contrário.</p>
+  <p>Para quem vende só suplemento, começar em Tray ou Nuvemshop é certo: entrega em 6 semanas e o que falta não é essencial. No seu caso, as duas coisas que <b>definem</b> a operação — captura de pagamento condicionada à triagem e orçamento de fórmula sem preço prévio — não existem nessas plataformas e não se resolvem com app. Você entraria vendendo só a parte fácil do seu próprio negócio, e migraria com catálogo, URLs, SEO e clientes já em produção: mais caro e mais arriscado do que esperar oito semanas. E a pressa é menor do que parece — o laboratório já fatura offline.</p>
 
   <div class="tbl-scroll">
   <table>
-    <thead><tr><th>Fase</th><th>Stack</th><th>Custo mensal aprox.</th><th>Limite</th></tr></thead>
+    <thead><tr><th>Fase</th><th>Stack</th><th>Custo</th><th>O que entrega</th></tr></thead>
     <tbody>
       <tr>
-        <td><b>Fase 1–2</b><br><span class="sub">semanas 1–16</span></td>
-        <td><b>Tray</b> ou <b>Nuvemshop</b> + app de assinatura + WhatsApp API + triagem de receita em ferramenta externa controlada (formulário em bucket cifrado + painel simples)</td>
-        <td class="num">R$ 300–900</td>
-        <td>Fluxo de receita fica meio manual; modelo de composição vira campo customizado, não entidade</td>
+        <td><b>Fase 0</b><br><span class="sub">semanas 1–3</span></td>
+        <td>Landing de "enviar receita" + upload cifrado + WhatsApp Business API + painel de triagem mínimo (planilha protegida ou app interno simples). Pagamento por link.</td>
+        <td class="num">R$ 2–6 mil<br><span class="sub">uma vez</span></td>
+        <td>Começa a atender a demanda magistral online <b>antes</b> da loja existir. Valida SLA, volume e objeções reais com custo próximo de zero.</td>
       </tr>
       <tr>
-        <td><b>Fase 3+</b><br><span class="sub">quando houver receita recorrente e SKU tarjado</span></td>
-        <td><b>Next.js</b> (App Router) + <b>Medusa 2</b> + Postgres + fila para triagem e ordem de manipulação; CMS headless para blog e páginas de ativo</td>
-        <td class="num">R$ 600–2.500<br><span class="sub">+ desenvolvimento</span></td>
-        <td>Exige equipe ou parceiro técnico constante</td>
+        <td><b>Fase 1–2</b><br><span class="sub">semanas 4–24</span></td>
+        <td><b>Next.js</b> (App Router) + <b>Medusa 2</b> + Postgres + fila para triagem e ordem de manipulação + CMS headless para blog e páginas de ativo. Bucket privado cifrado para receitas.</td>
+        <td class="num">R$ 70–180 mil<br><span class="sub">+ R$ 800–2.500/mês</span></td>
+        <td>Os dois fluxos nativos, faixa sanitária como regra de sistema, assinatura, integração com o ERP existente.</td>
+      </tr>
+      <tr>
+        <td><span class="sub">Descartado</span></td>
+        <td><b>Tray / Nuvemshop</b></td>
+        <td class="num">R$ 300–900/mês</td>
+        <td><span class="sub">Captura condicionada e orçamento de fórmula não cabem. Serve para a Fase 0 se você preferir já ter vitrine de suplemento — mas sem construir catálogo grande em cima, para não criar dívida de migração.</span></td>
       </tr>
       <tr>
         <td><span class="sub">Alternativa</span></td>
-        <td><b>VTEX</b> — se a operação já nasce com loja física, multi-marca e time interno</td>
+        <td><b>VTEX</b> — se já houver loja física multi-unidade, multi-marca e time interno de e-commerce</td>
         <td class="num">% do faturamento</td>
-        <td>Custo e complexidade desproporcionais antes de ~R$ 300 mil/mês</td>
+        <td><span class="sub">Desproporcional antes de ~R$ 300 mil/mês de GMV.</span></td>
       </tr>
     </tbody>
   </table>
@@ -733,13 +842,13 @@ footer{
 
   <h3>Integrações, em ordem de necessidade</h3>
   <ol>
-    <li><b>Pagamento</b> — Pix e cartão com parcelamento longo (até 10×): Pagar.me, Mercado Pago ou Appmax. Parcelamento não é detalhe, é a mecânica de preço da categoria.</li>
-    <li><b>Antifraude</b> — obrigatório desde o dia 1; ticket alto e público novo atraem chargeback.</li>
-    <li><b>Frete</b> — Correios + transportadora regional via agregador (Melhor Envio, Frenet), com <b>prazo de manipulação somado ao prazo de transporte</b> na etiqueta de promessa.</li>
-    <li><b>ERP / fiscal</b> — NF-e e controle de lote. Em manipulação, rastreabilidade por lote não é opcional.</li>
-    <li><b>WhatsApp Business API</b> — atendimento, status de receita, lembrete de recompra.</li>
-    <li><b>CRM / e-mail</b> — carrinho abandonado, pós-venda D+7 e D+25, régua de recompra.</li>
-    <li><b>Armazenamento de receita</b> — bucket privado, cifrado, com URL assinada e expiração curta. Nunca no mesmo balde dos assets do site.</li>
+    <li><b>ERP que o laboratório já usa</b> — primeira integração, não a última. NF-e, controle de lote, insumo e ordem de manipulação já vivem lá; o site alimenta esse fluxo, não cria um paralelo. <span class="sub">Se o ERP não tem API, isso vira o principal risco de cronograma da Fase 1 — descobrir isso na semana 2, não na 12.</span></li>
+    <li><b>Pagamento</b> — Pix e cartão até 10×, com <b>autorização e captura separadas</b> (requisito, não preferência): Pagar.me, Mercado Pago ou Appmax. Link de pagamento para o fluxo de orçamento.</li>
+    <li><b>Antifraude</b> — desde o dia 1. Ticket alto e operação nova atraem chargeback.</li>
+    <li><b>Frete</b> — Correios + transportadora regional via agregador (Melhor Envio, Frenet), com prazo de manipulação somado ao de transporte na promessa.</li>
+    <li><b>WhatsApp Business API</b> — status de receita, orçamento pronto, lembrete de recompra. No fluxo B é o canal principal, não o secundário.</li>
+    <li><b>CRM / e-mail</b> — carrinho abandonado, orçamento não respondido (a régua de maior retorno do site), pós-venda D+7 e D+25.</li>
+    <li><b>Armazenamento de receita</b> — bucket privado cifrado, URL assinada de validade curta, acesso restrito ao RT, log de acesso. Nunca no mesmo balde dos assets públicos.</li>
   </ol>
 </section>
 
@@ -764,10 +873,11 @@ footer{
   <h2>SEO: o ativo é a página de ativo</h2>
   <p>Saúde é território YMYL — o Google exige sinal de autoridade e penaliza conteúdo sem responsável técnico. A boa notícia: isso favorece quem tem farmacêutico de verdade e elimina o concorrente que só fez dropshipping de suplemento.</p>
 
-  <h3>Três camadas de conteúdo</h3>
+  <h3>Quatro camadas de conteúdo</h3>
   <ul>
     <li><b>Hub de objetivo</b> (<code>/emagrecimento</code>) — dispute o termo comercial amplo. Texto de categoria com 400–600 palavras acima ou abaixo da grade, links para os ativos.</li>
     <li><b>Página de ativo</b> (<code>/ativos/morosil</code>, <code>/ativos/creatina</code>, <code>/ativos/vitamina-d3</code>) — <b>a camada mais valiosa e a mais negligenciada.</b> O que é, mecanismo, evidência, dose usual, com o que combina, quem não deve usar, e os produtos da casa que contêm o ativo. Captura busca informacional de alta intenção e alimenta link interno para PDP.</li>
+    <li><b>Página de especialidade</b> (<code>/especialidades/dermatologia</code>, <code>/especialidades/hormonal</code>) — o que o laboratório manipula naquela área, formas disponíveis, prazo, como enviar a receita. Captura a busca de quem saiu do consultório com uma prescrição na mão e o nome de nenhum laboratório — e é conteúdo que sua concorrência puramente D2C não tem repertório para escrever.</li>
     <li><b>Blog</b> — dúvidas reais: "manipulado é confiável?", "vitamina D manipulada ou industrializada?", "quanto tempo para sentir efeito de creatina". Cada post com autor farmacêutico, CRF, data de publicação e <b>data de revisão técnica</b>.</li>
   </ul>
 
@@ -817,6 +927,8 @@ footer{
       <tr><td>Recompra em 90 dias</td><td class="num">15%</td><td class="num">35%</td><td>O melhor sinal de qualidade real do produto</td></tr>
       <tr><td>SLA de triagem de receita</td><td class="num">&lt; 4 h úteis</td><td class="num">&lt; 2 h úteis</td><td>Gargalo direto de faturamento</td></tr>
       <tr><td>Abandono de checkout</td><td class="num">&lt; 70%</td><td class="num">&lt; 55%</td><td>Mede se prazo e receita foram comunicados antes</td></tr>
+      <tr><td>Orçamento que vira pedido</td><td class="num">45%</td><td class="num">65%</td><td>Mede clareza do orçamento e velocidade da resposta — não preço</td></tr>
+      <tr><td>Receita vinda da porta da receita</td><td class="num">20%</td><td class="num">40–50%</td><td>É o faturamento que a concorrência nova não alcança</td></tr>
       <tr><td>Custo de aquisição</td><td class="num">&lt; 35% do ticket</td><td class="num">&lt; 22%</td><td>Acima de 40% a margem de manipulado não fecha</td></tr>
     </tbody>
   </table>
@@ -827,65 +939,81 @@ footer{
 <!-- 15 -->
 <section id="roadmap">
   <span class="sec-n">15 · Execução</span>
-  <h2>Roadmap em quatro fases</h2>
-  <p>Sequência real de dependência: nada na Fase 2 pode começar antes da Fase 1 fechar, porque cada fase só existe se a anterior validou demanda.</p>
+  <h2>Roadmap em cinco fases</h2>
+  <p>Com o laboratório já regularizado e operando, cai fora a fase de licenciamento e entra uma Fase 0 curta, que começa a faturar antes de a loja existir. A sequência abaixo é de dependência real: cada fase só se justifica porque a anterior trouxe dado.</p>
 
   <div class="phase">
-    <div class="phase-k"><b>Fase 1</b>semanas 1–6<br>vender</div>
+    <div class="phase-k"><b>Fase 0</b>semanas 1–3<br>capturar</div>
     <div class="phase-b">
-      <h4>Loja mínima vendável, só isentos de prescrição</h4>
+      <h4>Porta da receita no ar, sem loja</h4>
       <ul>
-        <li>Regularização: AFE com endereço do site, RT designado, aviso de canal único, políticas redigidas por advogado</li>
-        <li>SaaS no ar; modelo de composição já no formato definitivo (semana 1 — isto é o que não se refaz depois)</li>
-        <li>60–100 SKUs nos quatro hubs principais + 3 packs com landing própria</li>
-        <li>Pix e cartão até 10×, frete integrado, prazo duplo comunicado, 18+ e LGPD</li>
-        <li>WhatsApp de orientação farmacêutica</li>
+        <li>Landing "enviar minha receita" com os quatro passos e prazo em cada um</li>
+        <li>Upload cifrado, consentimento LGPD específico, WhatsApp Business ativo</li>
+        <li>Painel de triagem mínimo para o RT + pagamento por link</li>
+        <li>Aviso do site na AFE conferido, políticas revisadas por advogado, dados do RT publicados</li>
+        <li><b>Objetivo real:</b> medir volume, SLA e as objeções verdadeiras do paciente antes de escrever a primeira linha da loja</li>
       </ul>
     </div>
   </div>
   <div class="phase">
-    <div class="phase-k"><b>Fase 2</b>semanas 7–16<br>reter</div>
+    <div class="phase-k"><b>Fase 1</b>semanas 4–14<br>vender</div>
     <div class="phase-b">
-      <h4>Recorrência e conteúdo</h4>
+      <h4>Loja headless com os dois fluxos</h4>
       <ul>
-        <li>Assinatura com autogestão completa e lembrete de recompra calculado pela posologia</li>
-        <li>30 páginas de ativo + blog com autoria e revisão técnica</li>
-        <li>Avaliações com moderação por eficácia; régua de carrinho abandonado e pós-venda</li>
-        <li>Mídia paga em busca de marca e de ativo — criativo dentro da RDC 96/2008</li>
+        <li>Modelo de dados definitivo na semana 4 — produto, solicitação de fórmula e <code>faixa_sanitaria</code> como regra de sistema (é o que não se refaz depois)</li>
+        <li>Catálogo: isentos + tarjados sem retenção, 100–200 SKUs nos hubs principais + 3 packs com landing própria</li>
+        <li>Fluxo A e Fluxo B nativos: triagem integrada, captura condicionada, orçamento com validade</li>
+        <li>Integração com o ERP do laboratório; Pix e cartão até 10×; frete com prazo duplo; 18+ e LGPD</li>
+        <li>Atendimento farmacêutico por WhatsApp com horário declarado</li>
       </ul>
     </div>
   </div>
   <div class="phase">
-    <div class="phase-k"><b>Fase 3</b>semanas 17–30<br>escalar</div>
+    <div class="phase-k"><b>Fase 2</b>semanas 15–24<br>reter</div>
     <div class="phase-b">
-      <h4>Fluxo de receita e catálogo tarjado</h4>
+      <h4>Recorrência e autoridade</h4>
       <ul>
-        <li>Upload cifrado, painel de triagem do RT, máquina de estados do pedido, captura condicionada</li>
-        <li>Receita salva e reaproveitada em recompra; SLA medido e publicado</li>
-        <li>Abertura do catálogo sob prescrição simples, após parecer do RT e do advogado sanitarista</li>
-        <li>Avaliação da migração para headless — decidida por dado, não por vontade</li>
+        <li>Assinatura com autogestão total; lembrete de recompra calculado pela posologia</li>
+        <li>Receita e fórmula salvas: recompra de manipulado em um clique, dentro da validade</li>
+        <li>30 páginas de ativo + páginas de especialidade + blog com autoria e revisão técnica</li>
+        <li>Avaliações com moderação por eficácia; réguas de carrinho e de orçamento não respondido</li>
+        <li>Mídia paga em marca e ativo, com criativo dentro da RDC 96/2008</li>
       </ul>
     </div>
   </div>
   <div class="phase">
-    <div class="phase-k"><b>Fase 4</b>mês 8+<br>expandir</div>
+    <div class="phase-k"><b>Fase 3</b>mês 7–10<br>especializar</div>
+    <div class="phase-b">
+      <h4>Portal do prescritor — a vantagem que ninguém copia</h4>
+      <ul>
+        <li>Médico cadastrado envia a receita, o paciente recebe o orçamento, paga e recebe em casa</li>
+        <li>Histórico de fórmulas por prescritor, repetição de receita, material técnico da casa</li>
+        <li>Hubs completos por especialidade; catálogo de fórmulas padronizadas por área</li>
+        <li>Programa de indicação profissional, dentro dos limites do CFM e do CFF</li>
+        <li><b>Por que aqui e não antes:</b> o portal só vale com o fluxo B maduro e o SLA de triagem estável</li>
+      </ul>
+    </div>
+  </div>
+  <div class="phase">
+    <div class="phase-k"><b>Fase 4</b>mês 11+<br>expandir</div>
     <div class="phase-b">
       <h4>Marca e canais</h4>
       <ul>
         <li>Sub-marcas por vertical (derma, nutri) sobre a mesma base de catálogo</li>
-        <li>App com recompra em um toque e lembrete de posologia — usuário de assinatura é quem justifica</li>
-        <li>Linhas exclusivas com nome próprio; programa de indicação profissional para prescritores</li>
+        <li>App com recompra em um toque e lembrete de posologia — justificado pela base de assinantes</li>
+        <li>Linhas exclusivas com nome próprio, no modelo "Abelhinha / Forpump" do benchmark</li>
       </ul>
     </div>
   </div>
 
   <h3>Ordem de grandeza de investimento</h3>
   <ul>
-    <li><b>Fase 1</b> — R$ 18–45 mil (plataforma, identidade, fotografia real, 100 SKUs cadastrados, jurídico). Recorrente R$ 300–900/mês.</li>
-    <li><b>Fase 2</b> — R$ 15–35 mil (assinatura, conteúdo, 30 páginas de ativo) + mídia à parte.</li>
-    <li><b>Fase 3</b> — R$ 40–120 mil se headless; R$ 15–30 mil se fluxo de receita sobre o SaaS.</li>
+    <li><b>Fase 0</b> — R$ 2–6 mil. Menor risco e maior aprendizado por real do projeto inteiro.</li>
+    <li><b>Fase 1</b> — R$ 70–180 mil (loja headless, dois fluxos, integração com ERP, identidade, fotografia real do laboratório, cadastro de 200 SKUs). Recorrente R$ 800–2.500/mês.</li>
+    <li><b>Fase 2</b> — R$ 25–50 mil (assinatura, conteúdo, páginas de ativo e especialidade) + mídia à parte.</li>
+    <li><b>Fase 3</b> — R$ 40–90 mil (portal do prescritor).</li>
   </ul>
-  <p class="sub">Faixas para orçamento comparativo, não proposta. Variam muito com fotografia própria, volume de SKU e se há equipe interna.</p>
+  <p class="sub">Faixas para orçamento comparativo, não proposta. O que mais move o número da Fase 1: se o ERP tem API, se a fotografia é própria, e se há equipe interna ou tudo é contratado.</p>
 </section>
 
 <!-- 16 -->
@@ -896,8 +1024,11 @@ footer{
   <table>
     <thead><tr><th>Risco</th><th>Impacto</th><th>Mitigação</th></tr></thead>
     <tbody>
-      <tr><td><b>Fiscalização sanitária</b> por venda remota de tarjado ou propaganda irregular</td><td>Interdição do site, multa, perda de AFE</td><td>Fase 1 sem tarjado; guia de redação como validação de campo no CMS; parecer do RT arquivado antes de publicar SKU</td></tr>
+      <tr><td><b>Dispensação remota indevida</b> — item com retenção obrigatória ou da Portaria 344/98 publicado por erro de cadastro</td><td>O risco mais grave do projeto: interdição do site, multa, ameaça à AFE de um laboratório com anos de operação</td><td><code>faixa_sanitaria</code> bloqueando publicação no próprio cadastro; dupla conferência do RT antes de o SKU ir ao ar; auditoria periódica do catálogo publicado</td></tr>
+      <tr><td><b>Propaganda irregular</b> — promessa de resultado, superlativo, antes-e-depois</td><td>Multa e autuação; em reincidência, restrição de publicidade</td><td>Guia de redação como validação de campo no CMS, não como recomendação; alegação escolhida de lista fechada; revisão do RT antes de publicar</td></tr>
       <tr><td><b>Vazamento de receita ou exame</b></td><td>Dado sensível: sanção de LGPD e destruição de reputação</td><td>Bucket cifrado e segregado, URL assinada, acesso só do RT, trilha de auditoria, retenção definida</td></tr>
+      <tr><td><b>ERP legado sem API</b></td><td>Integração manual, retrabalho e estouro de cronograma na Fase 1</td><td>Levantar na semana 2, antes de qualquer desenvolvimento. Se não houver API, orçar middleware ou revisar o ERP — decisão de Fase 0, não de Fase 1</td></tr>
+      <tr><td><b>Fila de triagem</b> maior que a capacidade do RT</td><td>SLA estoura, orçamento atrasa, funil inteiro para — e mais mídia não resolve</td><td>SLA monitorado com alerta; segundo farmacêutico previsto antes de escalar mídia; campanha dimensionada pela bancada</td></tr>
       <tr><td><b>Gargalo de manipulação</b> em pico de campanha</td><td>Atraso em massa, chargeback, reclamação pública</td><td>Capacidade diária declarada no sistema; pausar SKU automaticamente ao estourar; campanha dimensionada pela bancada, não pela mídia</td></tr>
       <tr><td><b>Reprovação de anúncio</b> em Meta e Google</td><td>Aquisição paga inviável; Fase 2 travada</td><td>Criativo conservador desde o briefing; peso em SEO e conteúdo desde a Fase 1</td></tr>
       <tr><td><b>Guerra de preço</b> com quem promete resultado</td><td>Margem comprimida</td><td>Competir em prazo, atendimento farmacêutico e transparência de composição — não em promessa</td></tr>
@@ -910,22 +1041,27 @@ footer{
 <!-- 17 -->
 <section id="perguntas">
   <span class="sec-n">17 · Próximo passo</span>
-  <h2>O que preciso saber para detalhar</h2>
-  <p>Este plano assume um entrante novo, sem loja física, começando por catálogo isento de prescrição. As respostas abaixo mudam o roadmap — as três primeiras mudam bastante.</p>
+  <h2>O que ainda falta para detalhar</h2>
+  <p>Duas definições já entraram nesta versão: <b>o laboratório está em operação e regularizado</b> — some a fase de licenciamento e a Fase 0 começa já — e <b>o escopo inclui medicamento manipulado</b>, o que trouxe o fluxo de prescrição da Fase 3 para a Fase 1 e mudou a recomendação de plataforma. As perguntas abaixo afinam o resto; as três primeiras mexem em cronograma e orçamento.</p>
   <ol class="asks">
-    <li><b>O laboratório já existe e está regularizado?</b> AFE, licença sanitária, RT designado e capacidade de manipulação — ou o site vem antes da operação? Isso define se a Fase 1 é de 6 ou de 26 semanas.</li>
-    <li><b>Manipulação própria ou terceirizada?</b> Muda prazo prometido, margem, controle de qualidade e o que se pode afirmar sobre o processo.</li>
-    <li><b>Catálogo de largada:</b> só suplemento e dermocosmético, ou já com fórmula sob prescrição? Recomendo o primeiro, e quero confirmar.</li>
-    <li><b>Orçamento e prazo</b> para a Fase 1 — decide SaaS versus headless mais do que qualquer argumento técnico.</li>
-    <li><b>Existe equipe técnica</b> ou tudo será contratado? Headless sem manutenção constante vira dívida.</li>
-    <li><b>Área de entrega inicial</b> — nacional ou regional? Afeta frete, prazo e a régua de frete grátis.</li>
-    <li><b>Marca e domínio</b> já definidos? Se ainda não, a identidade da seção 13 pode ser desenvolvida junto com a nomenclatura.</li>
+    <li><b>O ERP do laboratório tem API?</b> Qual é ele? Essa é hoje a maior incógnita de custo e prazo da Fase 1 — vale levantar antes de qualquer outra coisa.</li>
+    <li><b>Quais especialidades concentram o faturamento hoje?</b> Dermatologia, hormonal, pediatria, ortomolecular, veterinária? Define a ordem dos hubs, das páginas de especialidade e das fórmulas padronizadas.</li>
+    <li><b>Qual a capacidade da bancada e quanto dela está ociosa?</b> Fórmulas por dia, e quantas horas o RT tem por dia para triagem. Dimensiona SLA, mídia e o momento de contratar o segundo farmacêutico.</li>
+    <li><b>Quantos prescritores ativos existem na carteira?</b> Se forem muitos, o portal da Fase 3 pode valer mais que metade da mídia paga planejada — e talvez deva subir no roadmap.</li>
+    <li><b>Orçamento e prazo</b> para a Fase 1, e se há equipe técnica interna ou tudo será contratado. Headless sem manutenção constante vira dívida.</li>
+    <li><b>Área de entrega inicial</b> — nacional ou regional? Afeta frete, prazo prometido e a régua de frete grátis. Há restrição de modal para creme e solução no verão?</li>
+    <li><b>Marca e domínio</b> — o e-commerce usa a marca do laboratório ou nasce com nome próprio? Se o laboratório já tem identidade consolidada, a seção 13 vira adaptação, não criação.</li>
   </ol>
-  <p>Respondidas essas, o passo natural é escolher um dos três: <b>(a)</b> wireframe navegável da home, PLP e PDP; <b>(b)</b> especificação técnica do fluxo de receita, pronta para implementação; <b>(c)</b> a loja da Fase 1 em pé, com catálogo de exemplo.</p>
+  <p>Respondidas essas, o passo natural é escolher um destes três — e, pelo que o plano mostra, eu começaria pelo terceiro:</p>
+  <ul>
+    <li><b>(a)</b> wireframe navegável da home com as duas portas, PLP e PDP;</li>
+    <li><b>(b)</b> especificação técnica dos dois fluxos de receita, pronta para implementação;</li>
+    <li><b>(c)</b> <b>a Fase 0 no ar em 3 semanas</b> — a porta da receita funcionando, medindo volume e SLA reais enquanto a loja é construída com dado em vez de suposição.</li>
+  </ul>
 </section>
 
 <footer>
-  <span>Plano de produto · v1 · 11 set 2026</span>
+  <span>Plano de produto · v2 · 11 set 2026</span>
   <span>Referência: oficialfarma.com.br · verificação regulatória pendente com RT e advogado sanitarista</span>
 </footer>
 
